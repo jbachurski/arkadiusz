@@ -1,9 +1,9 @@
 extends Area2D
 
-const BULLET = preload("res://entities/projectiles/bullet.tscn")
+const MISSILE = preload("res://entities/projectiles/missile.tscn")
 
 func _on_shoot_timer_timeout():
-	var b = BULLET.instantiate()
+	var b = MISSILE.instantiate()
 	get_parent().get_parent().add_child(b)
 	b.start(position, Vector2(0, -1), false)
 
