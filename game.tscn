@@ -13,3 +13,4 @@ grow_vertical = 2
 color = Color(0.109804, 0.109804, 0.109804, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_crfkl")]
+position = Vector2(300, 700)
