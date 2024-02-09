@@ -13,3 +13,7 @@ func start(pos: Vector2, dir: Vector2, en: bool) -> void:
 
 func _process(delta):
 	position = position + delta * MOVE_SPEED * direction
+
+	var h = get_viewport_rect().size.y
+	if not (-0.2 * h < position.y and position.y < 1.2 * h):
+		queue_free()

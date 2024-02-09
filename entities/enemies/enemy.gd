@@ -26,3 +26,7 @@ func _on_shoot_timer_timeout():
 func _process(delta):
 	position = Vector2(initial.x + sin(live) * WAVE_RANGE, initial.y + live * FALL_SPEED)
 	live += delta * LIVE_NORM
+
+	var h = get_viewport_rect().size.y
+	if not (-0.2 * h < position.y and position.y < 1.2 * h):
+		queue_free()
