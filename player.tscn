@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_i308t"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 2
 position = Vector2(500, 500)
 script = ExtResource("1_i308t")
 

@@ -1,10 +1,9 @@
 extends CanvasGroup
 
 
-const ENEMY_NODE = preload("res://enemy.tscn")
+const ENEMY = preload("res://enemy.tscn")
 const TIME_TO_MOB = 2.0
 @export var mob_timer: float = 0.0
-var rng = RandomNumberGenerator.new()
 
 
 func reset_mob_timer():
@@ -18,9 +17,9 @@ func _ready():
 func _process(delta):
 	mob_timer += delta
 	if mob_timer > TIME_TO_MOB:
-		var e = ENEMY_NODE.instantiate()
+		var e = ENEMY.instantiate()
 		var size = get_viewport_rect().size
-		var pos = Vector2(rng.randf_range(0, size.x), -0.1 * size.y)
-		e.start(pos)
+		var pos = Vector2(randf_range(0.2, 0.8), -0.1) * size
 		add_child(e)
+		e.start(pos)
 		reset_mob_timer()
