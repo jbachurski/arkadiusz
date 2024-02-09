@@ -1,6 +1,6 @@
 extends Area2D
 
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://entities/projectiles/bullet.tscn")
 const WAVE_RANGE = 70
 const FALL_SPEED = 50
 const LIVE_NORM = 1

@@ -1,7 +1,7 @@
 extends CanvasGroup
 
 
-const ENEMY = preload("res://enemy.tscn")
+const ENEMY = preload("res://entities/enemies/enemy.tscn")
 const TIME_TO_MOB = 2.0
 @export var mob_timer: float = 0.0
 

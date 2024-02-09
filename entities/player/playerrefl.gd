@@ -1,6 +1,6 @@
 extends Area2D
 
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://entities/projectiles/bullet.tscn")
 
 func _process(delta):
 	if $ShootTimer.time_left <= 0:

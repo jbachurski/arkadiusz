@@ -1,6 +1,6 @@
 extends Area2D
 
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://entities/projectiles/bullet.tscn")
 const SPEED = 500.0
 
 func _process(delta):
