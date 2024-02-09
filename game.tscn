@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://entities/player/player.tscn" id="1_crfkl"]
-[ext_resource type="Script" path="res://entities/player/PlayerGroup.gd" id="2_r53bq"]
+[ext_resource type="Script" path="res://entities/player/player_group.gd" id="2_r53bq"]
 [ext_resource type="Script" path="res://entities/enemies/enemies.gd" id="2_ufrw2"]
-[ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/playerrefl.tscn" id="4_2hgb6"]
+[ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
 
 [node name="Game" type="CanvasLayer"]
 

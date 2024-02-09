@@ -1,4 +1,5 @@
 extends Area2D
+class_name PlayerBase
 
 const MISSILE = preload("res://entities/projectiles/missile.tscn")
 
