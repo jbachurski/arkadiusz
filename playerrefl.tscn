@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6tpfym8tlpnl"]
+[gd_scene load_steps=2 format=3 uid="uid://coqo55yidwpov"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_i308t"]
+[ext_resource type="Script" path="res://playerrefl.gd" id="1_0gmvb"]
 
 [node name="Body" type="Area2D"]
 z_index = 2
 position = Vector2(500, 500)
-script = ExtResource("1_i308t")
+script = ExtResource("1_0gmvb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -19,7 +19,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0.901961, 1)
+color = Color(0, 0.921569, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootTimer" type="Timer" parent="."]

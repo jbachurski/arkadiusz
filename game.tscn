@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cggumrix3vtas"]
+[gd_scene load_steps=5 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://player.tscn" id="1_crfkl"]
+[ext_resource type="Script" path="res://PlayerGroup.gd" id="2_r53bq"]
 [ext_resource type="Script" path="res://enemies.gd" id="2_ufrw2"]
+[ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://playerrefl.tscn" id="4_2hgb6"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -13,8 +15,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.109804, 0.109804, 0.109804, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_crfkl")]
-position = Vector2(300, 700)
-
 [node name="Enemies" type="CanvasGroup" parent="."]
 script = ExtResource("2_ufrw2")
+
+[node name="Friendlies" type="CanvasGroup" parent="."]
+
+[node name="PlayerGroup" type="CanvasGroup" parent="Friendlies"]
+script = ExtResource("2_r53bq")
+
+[node name="Player" parent="Friendlies/PlayerGroup" instance=ExtResource("1_crfkl")]
+position = Vector2(300, 700)
+
+[node name="PlayerRefl" parent="Friendlies/PlayerGroup" instance=ExtResource("4_2hgb6")]
