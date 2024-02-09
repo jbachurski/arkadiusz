@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cggumrix3vtas"]
+[gd_scene load_steps=3 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://player.tscn" id="1_crfkl"]
+[ext_resource type="Script" path="res://enemies.gd" id="2_ufrw2"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -14,3 +15,6 @@ color = Color(0.109804, 0.109804, 0.109804, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_crfkl")]
 position = Vector2(300, 700)
+
+[node name="Enemies" type="CanvasGroup" parent="."]
+script = ExtResource("2_ufrw2")
