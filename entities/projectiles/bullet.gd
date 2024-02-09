@@ -11,9 +11,16 @@ func start(pos: Vector2, dir: Vector2, en: bool) -> void:
 	enemy = en
 	position = initial
 
+func _between(x, a, b):
+	return a <= x and x <= b
+
 func _process(delta):
 	position = position + delta * MOVE_SPEED * direction
 
-	var h = get_viewport_rect().size.y
-	if not (-0.2 * h < position.y and position.y < 1.2 * h):
+	var size = get_viewport_rect().size
+	
+	if not (
+		_between(position.x, -0.2 * size.x, 1.2 * size.x) and
+		_between(position.y, -0.2 * size.y, 1.2 * size.y)
+	):
 		queue_free()
