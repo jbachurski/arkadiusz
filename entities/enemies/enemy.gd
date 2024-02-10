@@ -1,4 +1,5 @@
 extends Area2D
+class_name Enemy
 
 const BULLET = preload("res://entities/projectiles/bullet.tscn")
 const WAVE_RANGE = 70
@@ -19,7 +20,7 @@ func _reset_shoot_timer():
 
 func _on_shoot_timer_timeout():
 	var b = BULLET.instantiate()
-	b.start(position, Vector2(0, 1), true)
+	b.start(position, Vector2(0, 1), 150, 1)
 	get_parent().add_child(b)
 	_reset_shoot_timer()
 
