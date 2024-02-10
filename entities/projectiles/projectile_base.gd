@@ -26,6 +26,7 @@ func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: Team) -> void:
 	speed = spd
 	team = tm
 	direction = dir.normalized()
+	rotation = dir.rotated(PI / 2).angle()
 
 func _between(x, a, b):
 	return a <= x and x <= b
