@@ -9,10 +9,21 @@ var direction: Vector2
 var team: Team
 
 func _on_collision(area: Area2D):
+	if area.has_node("Shield"):
+		return
+	
 	if area.has_node("Health"):
 		var health = area.find_child("Health")
+		if health.team == team:
+			return
+
 		if health.deal_damage(damage, team):
 			self.queue_free()
+	
+	if area is Shield:
+		direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
+		rotation = direction.rotated(PI / 2).angle()
+		return
 
 func _ready():
 	self.connect("area_entered", _on_collision)
