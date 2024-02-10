@@ -23,11 +23,21 @@ func start(pos: Vector2) -> void:
 
 func _reset_shoot_timer():
 	$ShootTimer.start(randf_range(2, 3))
+	
+func _shoot_at(target: Vector2):
+	var dir = (target - position).normalized()
+	var b = BULLET.instantiate()
+	b.start(position, dir, 350, 1, ProjectileBase.TEAM.ENEMY)
+	get_parent().add_child(b)
 
 func _on_shoot_timer_timeout():
-	var b = BULLET.instantiate()
-	b.start(position, Vector2(0, 1), 350, 1, ProjectileBase.TEAM.ENEMY)
-	get_parent().add_child(b)
+	var player_pos : Vector2 = $"../../Friendlies/PlayerGroup/Player".position
+	var player_alt_pos : Vector2 = $"../../Friendlies/PlayerGroup/PlayerRefl".position
+	if (player_pos - position).abs() <= (player_alt_pos - position).abs():
+		_shoot_at(player_pos)
+	else:
+		_shoot_at(player_alt_pos)
+	
 	_reset_shoot_timer()
 
 func _process(delta):
