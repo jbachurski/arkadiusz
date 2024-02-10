@@ -36,3 +36,4 @@ func _ready():
 	$Health.connect("death", _on_death)
 	$AnimatedSprite2D.play("default")
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
+	$ShootTimer.connect("timeout", $LaserAudio.play)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlg0rkn4ganot"]
+[gd_scene load_steps=15 format=3 uid="uid://dlg0rkn4ganot"]
 
 [ext_resource type="Script" path="res://entities/enemies/linear_path.gd" id="1_pba27"]
 [ext_resource type="Script" path="res://entities/enemies/sweeper.gd" id="2_frbi2"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="3_u7ctl"]
 [ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="4_f4cot"]
+[ext_resource type="AudioStream" uid="uid://dwtghexd2hp5l" path="res://assets/enemy_laser.wav" id="5_kcvbo"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng8in"]
 _data = {
@@ -70,6 +71,7 @@ curve = SubResource("Curve2D_ng8in")
 [node name="Path" type="PathFollow2D" parent="."]
 rotation = 1.57243
 rotates = false
+cubic_interp = false
 loop = false
 script = ExtResource("1_pba27")
 time_to_pass = 4.0
@@ -95,3 +97,6 @@ speed_scale = 1.5
 [node name="ShootTimer" type="Timer" parent="Path/Sweeper"]
 wait_time = 0.9
 autostart = true
+
+[node name="LaserAudio" type="AudioStreamPlayer" parent="Path/Sweeper"]
+stream = ExtResource("5_kcvbo")
