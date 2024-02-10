@@ -11,11 +11,8 @@ var team: Team
 func _on_collision(area: Area2D):
 	if area.has_node("Health"):
 		var health = area.find_child("Health")
-		if health.team == team:
-			return
-
-		health.deal_damage(damage)
-		self.queue_free()
+		if health.deal_damage(damage, team):
+			self.queue_free()
 
 func _ready():
 	self.connect("area_entered", _on_collision)

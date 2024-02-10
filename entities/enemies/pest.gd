@@ -14,12 +14,8 @@ func _on_death():
 
 func _on_collision(area: Area2D):
 	if area.has_node("Health"):
-		var health = area.find_child("Health")
-		if health.team == $Health.team:
-			return
-
-		health.deal_damage(damage)
-		self.queue_free()
+		if area.find_child("Health").deal_damage(damage, $Health.team):
+			self.queue_free()
 
 func _ready():
 	$Health.connect("death", _on_death)
