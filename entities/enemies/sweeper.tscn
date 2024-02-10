@@ -1,41 +1,41 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0c2uwqpvn10k"]
+[gd_scene load_steps=14 format=3 uid="uid://dlg0rkn4ganot"]
 
-[ext_resource type="Script" path="res://entities/enemies/linear_path.gd" id="1_huc63"]
-[ext_resource type="Script" path="res://entities/enemies/pest.gd" id="2_u3l2o"]
-[ext_resource type="Script" path="res://entities/health/health.gd" id="2_w0ijl"]
-[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="4_kl85o"]
+[ext_resource type="Script" path="res://entities/enemies/linear_path.gd" id="1_pba27"]
+[ext_resource type="Script" path="res://entities/enemies/sweeper.gd" id="2_frbi2"]
+[ext_resource type="Script" path="res://entities/health/health.gd" id="3_u7ctl"]
+[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="4_f4cot"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng8in"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 614, 0, 0, 0, 0, 355, 364, 0, 0, 0, 0, 358, 2)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -100, 2.08165e-12, 100, 2.08165e-12, 210, 95, 0, 0, 0, 0, 423, 0)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4t6n7"]
 height = 40.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_041vs"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fx052"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uirk5"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(384, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sw4a"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku5j2"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3a0p"]
-atlas = ExtResource("4_kl85o")
+atlas = ExtResource("4_f4cot")
 region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_74lbb"]
@@ -70,23 +70,28 @@ curve = SubResource("Curve2D_ng8in")
 [node name="Path" type="PathFollow2D" parent="."]
 rotation = 1.57243
 rotates = false
-cubic_interp = false
 loop = false
-script = ExtResource("1_huc63")
+script = ExtResource("1_pba27")
+time_to_pass = 4.0
 
-[node name="Pest" type="Area2D" parent="Path"]
+[node name="Sweeper" type="Area2D" parent="Path"]
 rotation = -1.57243
-script = ExtResource("2_u3l2o")
+script = ExtResource("2_frbi2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/Pest"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/Sweeper"]
 position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4t6n7")
 
-[node name="Health" type="Node" parent="Path/Pest"]
-script = ExtResource("2_w0ijl")
+[node name="Health" type="Node" parent="Path/Sweeper"]
+script = ExtResource("3_u7ctl")
+max_health = 3
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/Pest"]
-scale = Vector2(0.2, 0.2)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/Sweeper"]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_74lbb")
 speed_scale = 1.5
+
+[node name="ShootTimer" type="Timer" parent="Path/Sweeper"]
+wait_time = 0.9
+autostart = true

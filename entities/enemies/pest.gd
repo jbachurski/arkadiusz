@@ -4,11 +4,14 @@ const SPEED = preload("res://entities/powerups/speed.tscn")
 
 @export var damage: int = 1 
 
+func real_position():
+	return get_global_transform_with_canvas().origin
+
 func _on_death():
 	if randf() <= 0.15:
 		var p = SPEED.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
-		p.position = get_global_transform_with_canvas().origin + noise
+		p.position = real_position() + noise
 		$"/root/Game/Friendlies".add_child(p)
 	queue_free()
 
@@ -19,7 +22,7 @@ func _on_collision(area: Area2D):
 			return
 
 		health.deal_damage(damage)
-		self.queue_free()
+		_on_death()
 
 func _ready():
 	$Health.connect("death", _on_death)

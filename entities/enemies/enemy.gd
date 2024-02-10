@@ -11,7 +11,7 @@ const LIVE_NORM = 1
 @export var initial: Vector2
 
 func _on_death():
-	if randf() <= 0.025:
+	if randf() <= 0.05:
 		var p = CANNON.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = get_global_transform_with_canvas().origin + noise
@@ -40,8 +40,8 @@ func _shoot_at(target: Vector2):
 	get_parent().add_child(b)
 
 func _on_shoot_timer_timeout():
-	var player_pos : Vector2 = $"../../Friendlies/PlayerGroup/Player".position
-	var player_alt_pos : Vector2 = $"../../Friendlies/PlayerGroup/PlayerRefl".position
+	var player_pos: Vector2 = $"/root/Game/Friendlies/PlayerGroup/Player".position
+	var player_alt_pos: Vector2 = $"/root/Game/Friendlies/PlayerGroup/PlayerRefl".position
 	if (player_pos - position).abs() <= (player_alt_pos - position).abs():
 		_shoot_at(player_pos)
 	else:
