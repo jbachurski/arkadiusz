@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://coqo55yidwpov"]
 
 [ext_resource type="Script" path="res://entities/player/player_refl.gd" id="1_0gmvb"]
-[ext_resource type="Script" path="res://entities/health/health.gd" id="2_25s1u"]
+[ext_resource type="Script" path="res://entities/player/player_health.gd" id="2_f867u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7024"]
 
@@ -30,7 +30,7 @@ wait_time = 0.4
 autostart = true
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("2_25s1u")
+script = ExtResource("2_f867u")
 team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

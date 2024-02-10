@@ -24,6 +24,7 @@ position = Vector2(300, 700)
 
 [node name="Health" type="Node" parent="Friendlies/PlayerGroup"]
 script = ExtResource("5_y2nar")
+max_health = 3
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2
