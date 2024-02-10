@@ -33,5 +33,5 @@ offset_right = 17.5
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.403922, 0, 1)
+color = Color(0.305882, 0.666667, 0.803922, 1)
 metadata/_edit_use_anchors_ = true

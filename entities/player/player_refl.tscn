@@ -19,7 +19,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.921569, 0, 1)
+color = Color(0.737255, 0, 0.0941176, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootTimer" type="Timer" parent="."]
