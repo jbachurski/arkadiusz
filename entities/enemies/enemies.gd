@@ -16,7 +16,7 @@ class Wave:
 		await fun.call()
 
 var WAVES = [
-	Wave.new(0.5, wave1),
+	Wave.new(1.0, wave1),
 	Wave.new(0.5, wave2)
 ]
 
@@ -36,26 +36,39 @@ func next_pest_refl(pos):
 		e.curve.set_point_position(p, Vector2(-1, 1) * e.curve.get_point_position(p))
 	return e
 
-func wave1():
-	add_child(next_pest_refl(Vector2(0.5, 0) * size))
-	for i in range(5):
+func add_pest_wave(c: int):
+	for i in range(c):
 		var pos = Vector2(0.25, -0.1) * size
 		add_child(next_pest(pos))
-		await sleep(0.5)
-	await sleep(2.5)
+		await sleep(0.33)
+	await sleep(1.5)
+
+func add_pest_refl_wave(c: int):
 	for i in range(5):
 		var pos = Vector2(0.75, -0.1) * size
 		add_child(next_pest_refl(pos))
-		await sleep(0.5)
+		await sleep(0.33)
+	await sleep(2)
+
+func wave1():
+	await add_pest_wave(6)
+	await add_pest_refl_wave(6)
+	add_pest_wave(4)
+	await add_pest_refl_wave(4)
 	await sleep(2.0)
+
+func add_enemy():
+	var e = ENEMY.instantiate()
+	var size = get_viewport_rect().size
+	var pos = Vector2(randf_range(0.05, 0.95), -0.1) * size
+	add_child(e)
+	e.start(pos)
 
 func wave2():
 	while true:
-		var e = ENEMY.instantiate()
-		var size = get_viewport_rect().size
-		var pos = Vector2(randf_range(0.05, 0.95), -0.1) * size
-		add_child(e)
-		e.start(pos)
+		add_enemy()
+		await sleep(randf_range(0, 0.2))
+		add_enemy()
 		await sleep(1.5)
 
 

@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-const TIME_TO_PASS = 6.0
+const TIME_TO_PASS = 3.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

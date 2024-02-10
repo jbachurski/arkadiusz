@@ -1,6 +1,6 @@
 extends PlayerBase
 
-var speed = 300.0
+var speed = 250.0
 var speed_level = 0
 
 func _process(delta):
