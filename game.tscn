@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cggumrix3vtas"]
+[gd_scene load_steps=8 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://entities/player/player.tscn" id="1_crfkl"]
 [ext_resource type="Script" path="res://entities/player/player_group.gd" id="2_r53bq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
 [ext_resource type="Script" path="res://background.gd" id="5_oxmxv"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="5_y2nar"]
+[ext_resource type="AudioStream" uid="uid://gckf6yhkn2mp" path="res://assets/player_laser.wav" id="6_weqv6"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -29,6 +30,11 @@ max_health = 3
 [node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
 wait_time = 0.2
 autostart = true
+
+[node name="LaserAudio" type="AudioStreamPlayer" parent="Friendlies/PlayerGroup"]
+stream = ExtResource("6_weqv6")
+volume_db = -5.0
+pitch_scale = 0.6
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2

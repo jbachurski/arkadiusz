@@ -21,6 +21,8 @@ func start(pos: Vector2) -> void:
 	position = initial
 	_reset_shoot_timer()
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
+	$ShootTimer.connect("timeout", $LaserAudio.play)
+
 
 func _reset_shoot_timer():
 	$ShootTimer.start(randf_range(2, 3))

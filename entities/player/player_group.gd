@@ -5,6 +5,7 @@ func _ready():
 	$Health.connect("death", _on_death)
 	$ShootTimer.connect("timeout", $Player.shoot)
 	$ShootTimer.connect("timeout", $PlayerRefl.shoot)
+	$ShootTimer.connect("timeout", $LaserAudio.play)
 
 func _on_death():
 	print("YOU DIED")
