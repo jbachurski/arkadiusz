@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_bgedf"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="2_3c21l"]
-[ext_resource type="PackedScene" uid="uid://bdlvatwihks1m" path="res://entities/health/shield.tscn" id="3_ofkh4"]
+[ext_resource type="PackedScene" uid="uid://baq3naxbiu3yk" path="res://entities/health/shield.tscn" id="3_ofkh4"]
 [ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="3_xtlxu"]
 [ext_resource type="AudioStream" uid="uid://dwtghexd2hp5l" path="res://assets/enemy_laser.wav" id="5_r2hfs"]
 
