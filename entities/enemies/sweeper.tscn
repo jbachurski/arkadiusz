@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ng8in"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -100, 2.08165e-12, 100, 2.08165e-12, 210, 95, 0, 0, 0, 0, 423, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -100, 2.08165e-12, 100, 2.08165e-12, 215, 140, 0, 0, 0, 0, 430, 2.08165e-12)
 }
 point_count = 3
 
