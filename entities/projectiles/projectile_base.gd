@@ -18,6 +18,7 @@ func _on_collision(area: Area2D):
 			if area is Shield:
 				direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
 				rotation = direction.rotated(PI / 2).angle()
+				area.find_child("BounceAudio").play()
 			else:
 				self.queue_free()
 
