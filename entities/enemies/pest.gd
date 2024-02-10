@@ -1,7 +1,14 @@
 extends Area2D
 
+const SPEED = preload("res://entities/powerups/speed.tscn")
+
 func _on_death():
-	self.queue_free()
+	if randf() <= 0.25:
+		var p = SPEED.instantiate()
+		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
+		p.position = get_global_transform_with_canvas().origin + noise
+		$"/root/Game/Friendlies".add_child(p)
+	queue_free()
 
 func _ready():
 	$Health.connect("death", _on_death)
