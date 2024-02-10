@@ -8,22 +8,28 @@ var speed: int
 var direction: Vector2
 var team: Team
 
+var timer: Timer
+const DAMAGE_INTERVAL: float = 0.1 # Used with timer to ensure same projectile doesn't hit twice
+
 func _on_collision(area: Area2D):
 	if area.has_node("Shield"):
 		return
 	
-	if area.has_node("Health"):
+	if area.has_node("Health") and timer.is_stopped():
 		var health = area.find_child("Health")
 		if health.deal_damage(damage, team):
 			if area is Shield:
 				direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
 				rotation = direction.rotated(PI / 2).angle()
 				area.find_child("BounceAudio").play()
+				timer.start(DAMAGE_INTERVAL)
 			else:
 				self.queue_free()
 
 func _ready():
 	self.connect("area_entered", _on_collision)
+	timer = Timer.new()
+	add_child(timer)
 
 func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: Team) -> void:
 	position = pos
