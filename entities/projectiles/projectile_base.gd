@@ -15,12 +15,11 @@ func _on_collision(area: Area2D):
 	if area.has_node("Health"):
 		var health = area.find_child("Health")
 		if health.deal_damage(damage, team):
-			self.queue_free()
-	
-	if area is Shield:
-		direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
-		rotation = direction.rotated(PI / 2).angle()
-		return
+			if area is Shield:
+				direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
+				rotation = direction.rotated(PI / 2).angle()
+			else:
+				self.queue_free()
 
 func _ready():
 	self.connect("area_entered", _on_collision)
