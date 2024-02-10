@@ -1,33 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6tpfym8tlpnl"]
+[gd_scene load_steps=8 format=3 uid="uid://b6tpfym8tlpnl"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_i308t"]
 [ext_resource type="Script" path="res://entities/player/player_health.gd" id="2_r50je"]
+[ext_resource type="Texture2D" uid="uid://beiwa6qgftpum" path="res://assets/purple_ship.png" id="3_eb6cp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5tj2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a0nq"]
+atlas = ExtResource("3_eb6cp")
+region = Rect2(0, 0, 248, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rvon"]
+atlas = ExtResource("3_eb6cp")
+region = Rect2(248, 0, 248, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0stj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a0nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rvon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10rrc"]
+size = Vector2(10, 34)
 
 [node name="Body2" type="Area2D"]
 z_index = 2
 position = Vector2(500, 500)
 script = ExtResource("1_i308t")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.611765, 0.501961, 1, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_a5tj2")
-
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_r50je")
 team = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_p0stj")
+frame_progress = 0.653796
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_10rrc")
