@@ -11,7 +11,7 @@ const LIVE_NORM = 1
 @export var initial: Vector2
 
 func _on_death():
-	if randf() <= 0.05:
+	if randf() <= 0.025:
 		var p = CANNON.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = get_global_transform_with_canvas().origin + noise
@@ -28,10 +28,11 @@ func start(pos: Vector2) -> void:
 	_reset_shoot_timer()
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
 	$ShootTimer.connect("timeout", $LaserAudio.play)
+	$ShootTimer.start($ShootTimer.time_left / 2)
 
 
 func _reset_shoot_timer():
-	$ShootTimer.start(randf_range(2, 3))
+	$ShootTimer.start(randf_range(1, 2.5))
 	
 func _shoot_at(target: Vector2):
 	var dir = (target - position).normalized()
