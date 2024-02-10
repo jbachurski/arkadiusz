@@ -17,7 +17,7 @@ class Wave:
 
 var WAVES = [
 	Wave.new(0.5, wave1),
-	Wave.new(7.5, wave2)
+	Wave.new(0.5, wave2)
 ]
 
 func sleep(seconds: float) -> void:
@@ -47,17 +47,20 @@ func wave1():
 		var pos = Vector2(0.75, -0.1) * size
 		add_child(next_pest_refl(pos))
 		await sleep(0.5)
+	await sleep(2.0)
 
 func wave2():
-	var e = ENEMY.instantiate()
-	var size = get_viewport_rect().size
-	var pos = Vector2(randf_range(0.05, 0.95), -0.1) * size
-	add_child(e)
-	e.start(pos)
+	while true:
+		var e = ENEMY.instantiate()
+		var size = get_viewport_rect().size
+		var pos = Vector2(randf_range(0.05, 0.95), -0.1) * size
+		add_child(e)
+		e.start(pos)
+		await sleep(1.5)
+
 
 func run_waves():
 	for wave in WAVES:
-		print(wave.fun)
 		await sleep(wave.delay)
 		await wave.start()
 
