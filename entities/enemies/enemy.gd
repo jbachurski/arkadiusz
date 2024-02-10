@@ -15,7 +15,7 @@ func _on_death():
 		var p = CANNON.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = get_global_transform_with_canvas().origin + noise
-		$"/root/Game/Friendlies".add_child(p)
+		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	self.queue_free()
 
 func _ready():

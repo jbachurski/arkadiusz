@@ -14,7 +14,7 @@ func _on_death():
 		var p = SPEED.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = real_position() + noise
-		$"/root/Game/Friendlies".add_child(p)
+		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	queue_free()
 
 func _shoot_at(target: Vector2):
