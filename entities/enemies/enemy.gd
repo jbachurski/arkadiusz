@@ -11,7 +11,7 @@ const LIVE_NORM = 1
 @export var initial: Vector2
 
 func _on_death():
-	if randf() <= 0.025:
+	if randf() <= 0.035:
 		var p = CANNON.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = get_global_transform_with_canvas().origin + noise
