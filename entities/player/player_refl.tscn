@@ -25,10 +25,6 @@ grow_vertical = 2
 color = Color(0.737255, 0, 0.0941176, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.4
-autostart = true
-
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_f867u")
 team = 1

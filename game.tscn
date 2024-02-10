@@ -26,6 +26,10 @@ position = Vector2(300, 700)
 script = ExtResource("5_y2nar")
 max_health = 3
 
+[node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
+wait_time = 0.4
+autostart = true
+
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2
 anchors_preset = 15
