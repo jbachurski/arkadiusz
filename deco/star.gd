@@ -3,7 +3,7 @@ extends Node2D
 var t: float = 0.0
 var base_scale: float = randf_range(0.6, 1.4)
 const TIME_TO_PERIOD = 5.0
-const FALL_SPEED = 50.0
+const FALL_SPEED = 25.0
 @onready var size: Vector2i = get_viewport_rect().size
 
 func fall(delta):
