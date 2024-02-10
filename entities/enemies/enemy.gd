@@ -28,7 +28,7 @@ func _reset_shoot_timer():
 func _shoot_at(target: Vector2):
 	var dir = (target - position).normalized()
 	var b = BULLET.instantiate()
-	b.start(position, dir, 350, 1, ProjectileBase.TEAM.ENEMY)
+	b.start(position, dir, 350, 1, ProjectileBase.Team.ENEMY)
 	get_parent().add_child(b)
 
 func _on_shoot_timer_timeout():

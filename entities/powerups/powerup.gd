@@ -3,6 +3,11 @@ class_name Powerup
 
 const MOVE_SPEED = 70.0
 
+enum Kind {SPEED}
+
+static func kind():
+	return null
+
 func _process(delta):
 	position.y = position.y + delta * MOVE_SPEED
 

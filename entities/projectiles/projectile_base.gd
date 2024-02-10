@@ -1,12 +1,12 @@
 extends Area2D
 class_name ProjectileBase
 
-enum TEAM {ENEMY, PLAYER}
+enum Team {ENEMY, PLAYER}
 
 var damage: int
 var speed: int
 var direction: Vector2
-var team: TEAM
+var team: Team
 
 func _on_collision(area: Area2D):
 	if area.has_node("Health"):
@@ -20,7 +20,7 @@ func _on_collision(area: Area2D):
 func _ready():
 	self.connect("area_entered", _on_collision)
 
-func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: TEAM) -> void:
+func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: Team) -> void:
 	position = pos
 	damage = dmg
 	speed = spd

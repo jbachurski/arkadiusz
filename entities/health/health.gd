@@ -3,7 +3,7 @@ class_name Health
 
 signal death
 
-@export var team: ProjectileBase.TEAM
+@export var team: ProjectileBase.Team
 @export var max_health: int = 1
 var health: int = 0
 
