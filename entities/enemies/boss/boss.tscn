@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbdlj6f5sv8pd"]
+
+[ext_resource type="Script" path="res://entities/enemies/boss/boss.gd" id="1_jixjb"]
+[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="2_101km"]
+[ext_resource type="PackedScene" uid="uid://b4mx4kjg542ox" path="res://entities/enemies/boss/boss_gun.tscn" id="3_0tkc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfdx2"]
+size = Vector2(192, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cg74"]
+atlas = ExtResource("2_101km")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq67x"]
+atlas = ExtResource("2_101km")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st3eq"]
+atlas = ExtResource("2_101km")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iudqc"]
+atlas = ExtResource("2_101km")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xhbm"]
+atlas = ExtResource("2_101km")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe7rl"]
+atlas = ExtResource("2_101km")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_458yk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cg74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq67x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st3eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iudqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xhbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe7rl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Boss" type="Area2D"]
+script = ExtResource("1_jixjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_pfdx2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.227451, 0.164706, 1)
+sprite_frames = SubResource("SpriteFrames_458yk")
+
+[node name="BossGun" parent="." instance=ExtResource("3_0tkc5")]
+position = Vector2(-64, 24)
+
+[node name="BossGun2" parent="." instance=ExtResource("3_0tkc5")]
+position = Vector2(64, 24)
+
+[node name="MainGunTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
