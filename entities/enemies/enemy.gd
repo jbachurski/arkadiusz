@@ -9,6 +9,12 @@ const LIVE_NORM = 1
 @export var live: float = 0.0
 @export var initial: Vector2
 
+func _on_death():
+	self.queue_free()
+
+func _ready():
+	$Health.connect("death", _on_death)
+
 func start(pos: Vector2) -> void:
 	initial = pos
 	position = initial
@@ -20,7 +26,7 @@ func _reset_shoot_timer():
 
 func _on_shoot_timer_timeout():
 	var b = BULLET.instantiate()
-	b.start(position, Vector2(0, 1), 150, 1)
+	b.start(position, Vector2(0, 1), 150, 1, ProjectileBase.TEAM.ENEMY)
 	get_parent().add_child(b)
 	_reset_shoot_timer()
 

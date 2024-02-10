@@ -1,15 +1,31 @@
 extends Area2D
 class_name ProjectileBase
 
+enum TEAM {ENEMY, PLAYER}
+
 var damage: int
 var speed: int
 var direction: Vector2
+var team: TEAM
 
-func start(position: Vector2, dir: Vector2, speed: float, damage: int) -> void:
+func _on_collision(area: Area2D):
+	if area.has_node("Health"):
+		var health = area.find_child("Health", true, true)
+		if health.team == team:
+			return
+		
+		health.deal_damage(damage)
+		self.queue_free()
+
+func _ready():
+	self.connect("area_entered", _on_collision)
+
+func start(position: Vector2, dir: Vector2, speed: float, damage: int, team: TEAM) -> void:
 	self.position = position
 	self.damage = damage
 	self.speed = speed
-	direction = dir.normalized()
+	self.team = team
+	self.direction = dir.normalized()
 
 func _between(x, a, b):
 	return a <= x and x <= b

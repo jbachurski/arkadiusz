@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwej66kd4ce4f"]
+[gd_scene load_steps=6 format=3 uid="uid://d0c2uwqpvn10k"]
 
 [ext_resource type="Script" path="res://entities/enemies/pest_path.gd" id="1_ej6kf"]
+[ext_resource type="Script" path="res://entities/enemies/pest.gd" id="2_u3l2o"]
+[ext_resource type="Script" path="res://entities/health/health.gd" id="2_w0ijl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng8in"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 614, 0, 0, 0, 0, 355, 364, 0, 0, 0, 0, 358, 2)
 }
 point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mykt0"]
 
 [node name="PestPathTrace" type="Path2D"]
 curve = SubResource("Curve2D_ng8in")
@@ -20,6 +24,7 @@ script = ExtResource("1_ej6kf")
 
 [node name="Pest" type="Area2D" parent="PestPath"]
 rotation = -1.57243
+script = ExtResource("2_u3l2o")
 
 [node name="ColorRect" type="ColorRect" parent="PestPath/Pest"]
 anchors_preset = 8
@@ -35,3 +40,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.305882, 0.666667, 0.803922, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PestPath/Pest"]
+shape = SubResource("RectangleShape2D_mykt0")
+
+[node name="Health" type="Node" parent="PestPath/Pest"]
+script = ExtResource("2_w0ijl")
