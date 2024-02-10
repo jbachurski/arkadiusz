@@ -1,6 +1,5 @@
 extends CanvasGroup
 
-
 const PEST = preload("res://entities/enemies/pest.tscn")
 const ENEMY = preload("res://entities/enemies/enemy.tscn")
 
@@ -14,7 +13,6 @@ class Wave:
 		
 	func start():
 		await fun.call()
-
 
 var WAVES = [
 	Wave.new(2.5, wave1),

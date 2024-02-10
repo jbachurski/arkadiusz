@@ -4,9 +4,6 @@
 
 [node name="Missile" type="Area2D"]
 script = ExtResource("1_rcdux")
-initial = null
-direction = null
-enemy = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

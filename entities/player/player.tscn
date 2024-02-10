@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6tpfym8tlpnl"]
+[gd_scene load_steps=3 format=3 uid="uid://b6tpfym8tlpnl"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_i308t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5tj2"]
 
 [node name="Body" type="Area2D"]
 z_index = 2
@@ -25,3 +27,6 @@ metadata/_edit_use_anchors_ = true
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a5tj2")
