@@ -27,6 +27,7 @@ color = Color(0, 0.6, 0.388235, 1)
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_3c21l")
+max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_re7or")

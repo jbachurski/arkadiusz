@@ -7,8 +7,9 @@ func _spawn_star():
 	var siz = get_viewport_rect().size
 	s.position = Vector2(randf_range(0.01, 0.99), -0.05) * siz
 	add_child(s)
+	return s
 
 func _ready():
 	$StarTimer.connect("timeout", _spawn_star)
-
-
+	for i in range(25):
+		_spawn_star().fall(i * $StarTimer.wait_time)
