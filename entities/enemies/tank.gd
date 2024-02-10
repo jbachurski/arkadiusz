@@ -7,8 +7,8 @@ const WAVE_RANGE = 100
 const FALL_SPEED = 100
 const LIVE_NORM = 1
 
-@export var live: float = 0.0
-@export var initial: Vector2
+var initial: Vector2
+var live: float = 0.0
 var target_y: float = 100
 
 func _on_death():
@@ -36,6 +36,7 @@ func _reset_shoot_timer():
 	$ShootTimer.start(randf_range(1, 2.5))
 
 func _shoot_at(target: Vector2):
+
 	var dir = (target - position).normalized()
 	var b = BULLET.instantiate()
 	b.start(position, dir, 600, 1, ProjectileBase.Team.ENEMY)
@@ -45,10 +46,8 @@ func _shoot_at(target: Vector2):
 func _on_shoot_timer_timeout():
 	var player_pos: Vector2 = $"/root/Game/Friendlies/PlayerGroup/Player".position
 	var player_alt_pos: Vector2 = $"/root/Game/Friendlies/PlayerGroup/PlayerRefl".position
-	if randi() % 2 == 1:
-		await _shoot_at(player_pos)
-	else:
-		await _shoot_at(player_alt_pos)
+	_shoot_at(player_pos if randi() % 2 == 1 else player_alt_pos)
+
 
 func _process(delta):
 	position = Vector2(

@@ -68,8 +68,7 @@ func add_pest_refl_wave(c: int):
 	await sleep(2)
 
 func wave1():
-	for _i in range(3):
-		add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
+	add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
 	await sleep(3)
 	await add_pest_wave(6)
 	for i in range(4):
