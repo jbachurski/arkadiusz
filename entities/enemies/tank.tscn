@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8pf0ejve0wrl"]
+
+[ext_resource type="Script" path="res://entities/enemies/tank.gd" id="1_klfr2"]
+[ext_resource type="Script" path="res://entities/health/health.gd" id="2_2l0lb"]
+[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="3_n3tq4"]
+[ext_resource type="PackedScene" uid="uid://bdlvatwihks1m" path="res://entities/health/shield.tscn" id="4_6qhie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_041vs"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx052"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uirk5"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sw4a"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku5j2"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3a0p"]
+atlas = ExtResource("3_n3tq4")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l76wy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_041vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx052")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uirk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sw4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku5j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3a0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6avf3"]
+radius = 28.0
+height = 120.0
+
+[node name="Tank" type="Area2D"]
+z_index = 1
+script = ExtResource("1_klfr2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_2l0lb")
+max_health = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_l76wy")
+frame_progress = 0.0257835
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6avf3")
+
+[node name="Shield" parent="." instance=ExtResource("4_6qhie")]
+scale = Vector2(0.9, 0.9)
+max_health = 10
+
+[node name="ShootTimer" type="Timer" parent="."]

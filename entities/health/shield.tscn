@@ -19,7 +19,6 @@ texture = ExtResource("1_3okfj")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_s5m4m")
-max_health = 2
 
 [node name="BounceAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_58qpn")

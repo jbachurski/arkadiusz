@@ -1,15 +1,12 @@
 extends Area2D
 
 class_name Shield
+@export var max_health: int = 2
 
 func _on_death():
 	self.queue_free()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	$Health.max_health = max_health
+	$Health.health = max_health
 	$Health.connect("death", _on_death)
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

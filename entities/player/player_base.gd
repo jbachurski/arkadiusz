@@ -32,6 +32,8 @@ func _on_collision(area):
 			get_parent().get_node("Player").speed_level += 1
 		elif area.kind() == Powerup.Kind.CANNON:
 			get_parent().cannon_level += 1
+		elif area.kind() == Powerup.Kind.FIRE:
+			print("fire emoji")
 		area.queue_free()
 
 func _ready():

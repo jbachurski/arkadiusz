@@ -1,5 +1,6 @@
 extends CanvasGroup
 
+const TANK = preload("res://entities/enemies/tank.tscn")
 const SWEEPER = preload("res://entities/enemies/sweeper.tscn")
 const PEST = preload("res://entities/enemies/pest.tscn")
 const ENEMY = preload("res://entities/enemies/enemy.tscn")
@@ -44,6 +45,14 @@ func next_sweeper(pos, refl: bool = false):
 			e.curve.set_point_position(p, Vector2(-1, 1) * e.curve.get_point_position(p))
 	return e
 	
+
+func add_tank(pos):
+	var e = TANK.instantiate()
+	add_child(e)
+	e.start(pos)
+	return e
+
+	
 func add_pest_wave(c: int):
 	for i in range(c):
 		var pos = Vector2(0.25, -0.1) * size
@@ -59,6 +68,9 @@ func add_pest_refl_wave(c: int):
 	await sleep(2)
 
 func wave1():
+	for _i in range(3):
+		add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
+	await sleep(3)
 	await add_pest_wave(6)
 	for i in range(4):
 		add_child(next_sweeper(Vector2(randf_range(0.0, 0.3), randf_range(-0.05, -0.02)) * size))
