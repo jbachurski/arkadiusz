@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dc3symmxvs547" path="res://assets/shield.png" id="1_3okfj"]
 [ext_resource type="Script" path="res://entities/health/shield.gd" id="1_a075v"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="3_s5m4m"]
+[ext_resource type="AudioStream" uid="uid://b2snj8ejd8mq1" path="res://assets/bounce_laser.wav" id="3_58qpn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdtwy"]
 radius = 80.0
@@ -19,3 +20,8 @@ texture = ExtResource("1_3okfj")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_s5m4m")
 max_health = 2
+
+[node name="BounceAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_58qpn")
+volume_db = -10.0
+pitch_scale = 0.7
