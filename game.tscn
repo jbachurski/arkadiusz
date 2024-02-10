@@ -24,6 +24,7 @@ position = Vector2(300, 700)
 
 [node name="Health" type="Node" parent="Friendlies/PlayerGroup"]
 script = ExtResource("5_y2nar")
+team = 1
 max_health = 3
 
 [node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
