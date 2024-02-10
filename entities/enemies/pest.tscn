@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwej66kd4ce4f"]
+
+[ext_resource type="Script" path="res://entities/enemies/pest_path.gd" id="1_ej6kf"]
+
+[sub_resource type="Curve2D" id="Curve2D_ng8in"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 614, 0, 0, 0, 0, 355, 364, 0, 0, 0, 0, 358, 2)
+}
+point_count = 4
+
+[node name="PestPathTrace" type="Path2D"]
+curve = SubResource("Curve2D_ng8in")
+
+[node name="PestPath" type="PathFollow2D" parent="."]
+rotation = 1.57243
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("1_ej6kf")
+
+[node name="Pest" type="Area2D" parent="PestPath"]
+rotation = -1.57243
+
+[node name="ColorRect" type="ColorRect" parent="PestPath/Pest"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -17.5
+offset_right = 17.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.403922, 0, 1)
+metadata/_edit_use_anchors_ = true
