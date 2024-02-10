@@ -1,8 +1,6 @@
 extends Area2D
 
 class_name Shield
-@export var health: Health
-@export var area: CollisionShape2D
 
 func _on_death():
 	self.queue_free()
