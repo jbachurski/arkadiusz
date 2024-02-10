@@ -23,6 +23,7 @@ func _on_collision(area: Area2D):
 				rotation = direction.rotated(PI / 2).angle()
 				area.find_child("BounceAudio").play()
 				timer.start(DAMAGE_INTERVAL)
+				speed /= 2
 			else:
 				self.queue_free()
 
