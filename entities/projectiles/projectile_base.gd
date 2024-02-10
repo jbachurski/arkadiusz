@@ -4,7 +4,7 @@ class_name ProjectileBase
 enum Team {ENEMY, PLAYER}
 
 var damage: int
-var speed: int
+var speed: float
 var direction: Vector2
 var team: Team
 

@@ -61,7 +61,7 @@ func add_pest_wave(c: int):
 	await sleep(1.5)
 
 func add_pest_refl_wave(c: int):
-	for i in range(5):
+	for i in range(c):
 		var pos = Vector2(0.75, -0.1) * size
 		add_child(next_pest(pos, true))
 		await sleep(0.33)
@@ -83,7 +83,6 @@ func wave1():
 
 func add_enemy():
 	var e = ENEMY.instantiate()
-	var size = get_viewport_rect().size
 	var pos = Vector2(randf_range(0.05, 0.95), -0.1) * size
 	add_child(e)
 	e.start(pos)
