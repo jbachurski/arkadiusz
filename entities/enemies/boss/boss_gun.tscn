@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4mx4kjg542ox"]
+
+[ext_resource type="Script" path="res://entities/enemies/boss/boss_gun.gd" id="1_dnnxx"]
+
+[node name="BossGun" type="Node2D"]
+script = ExtResource("1_dnnxx")
