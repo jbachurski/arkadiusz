@@ -48,8 +48,8 @@ func next_sweeper(pos, refl: bool = false):
 
 func add_tank(pos):
 	var e = TANK.instantiate()
+	e.position = pos
 	add_child(e)
-	e.start(pos)
 	return e
 
 	
