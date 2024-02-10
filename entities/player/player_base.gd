@@ -2,29 +2,29 @@ extends Area2D
 class_name PlayerBase
 
 const MISSILE = preload("res://entities/projectiles/missile.tscn")
-var flip_left: int = 1
-var flip_right: int = 1
+var flip_sides: int = 1
+var since_side: int = 0
 
 func shoot():
 	var b = MISSILE.instantiate()
 	get_parent().get_parent().add_child(b)
 	b.start(position, Vector2(0, -1), 1000, 1, ProjectileBase.Team.PLAYER)
+	if get_parent().cannon_level >= 1:
+		since_side += 1
+		if since_side >= 2:
+			if get_parent().cannon_level >= 2:
+				shoot_side()
+				flip_sides *= -1
+			shoot_side()
+			flip_sides *= -1
+			since_side = 0
 
-func shoot_left():
-	flip_right *= -1
+func shoot_side():
 	if get_parent().cannon_level < 1:
 		return
 	var b = MISSILE.instantiate()
 	get_parent().get_parent().add_child(b)
-	b.start(position, Vector2(-flip_right, -1), 800, 1, ProjectileBase.Team.PLAYER)
-
-func shoot_right():
-	flip_left *= -1
-	if get_parent().cannon_level < 2:
-		return
-	var b = MISSILE.instantiate()
-	get_parent().get_parent().add_child(b)
-	b.start(position, Vector2(flip_left, -1), 800, 1, ProjectileBase.Team.PLAYER)
+	b.start(position, Vector2(-flip_sides, -1), 800, 1, ProjectileBase.Team.PLAYER)
 
 func _on_collision(area):
 	if area is Powerup:
@@ -33,7 +33,7 @@ func _on_collision(area):
 		elif area.kind() == Powerup.Kind.CANNON:
 			get_parent().cannon_level += 1
 		elif area.kind() == Powerup.Kind.FIRE:
-			print("fire emoji")
+			get_parent().get_node("ShootTimer").wait_time *= 0.8
 		area.queue_free()
 
 func _ready():

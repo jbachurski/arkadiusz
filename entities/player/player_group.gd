@@ -6,12 +6,7 @@ func _ready():
 	$Health.connect("death", _on_death)
 	$ShootTimer.connect("timeout", $Player.shoot)
 	$ShootTimer.connect("timeout", $PlayerRefl.shoot)
-	$PlayerRefl.flip_left = -1
-	$PlayerRefl.flip_right = -1
-	$LeftShootTimer.connect("timeout", $Player.shoot_left)
-	$LeftShootTimer.connect("timeout", $PlayerRefl.shoot_left)
-	$RightShootTimer.connect("timeout", $Player.shoot_right)
-	$RightShootTimer.connect("timeout", $PlayerRefl.shoot_right)
+	$PlayerRefl.flip_sides = -1
 
 func _on_death():
 	print("YOU DIED")
