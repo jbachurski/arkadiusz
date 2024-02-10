@@ -38,4 +38,5 @@ func _on_collision(area):
 
 func _ready():
 	self.connect("area_entered", _on_collision)
+	$AnimatedSprite2D.play("default")
 

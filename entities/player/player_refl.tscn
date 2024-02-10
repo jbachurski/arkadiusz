@@ -1,33 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://coqo55yidwpov"]
+[gd_scene load_steps=8 format=3 uid="uid://coqo55yidwpov"]
 
 [ext_resource type="Script" path="res://entities/player/player_refl.gd" id="1_0gmvb"]
 [ext_resource type="Script" path="res://entities/player/player_health.gd" id="2_f867u"]
+[ext_resource type="Texture2D" uid="uid://cwwafp1ruxc46" path="res://assets/red_ship.png" id="3_yci0n"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7024"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_st71y"]
+atlas = ExtResource("3_yci0n")
+region = Rect2(0, 0, 248, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8kk4"]
+atlas = ExtResource("3_yci0n")
+region = Rect2(248, 0, 248, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3se2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st71y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8kk4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5pyw"]
+size = Vector2(10, 34)
 
 [node name="Body" type="Area2D"]
 z_index = 2
 position = Vector2(500, 500)
 script = ExtResource("1_0gmvb")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.737255, 0, 0.0941176, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_f867u")
 team = 1
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_3se2k")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_k7024")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_c5pyw")
