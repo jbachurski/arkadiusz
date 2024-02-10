@@ -23,7 +23,7 @@ func _ready():
 func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: Team) -> void:
 	position = pos
 	damage = dmg
-	speed = spd / 10
+	speed = spd
 	team = tm
 	direction = dir.normalized()
 	rotation = dir.rotated(PI / 2).angle()
