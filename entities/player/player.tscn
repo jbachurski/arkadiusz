@@ -22,11 +22,11 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0.901961, 1)
+color = Color(0.611765, 0.501961, 1, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.4
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

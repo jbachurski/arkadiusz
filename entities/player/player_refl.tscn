@@ -26,7 +26,7 @@ color = Color(0.737255, 0, 0.0941176, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.4
 autostart = true
 
 [node name="Health" type="Node" parent="."]
