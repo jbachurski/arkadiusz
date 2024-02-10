@@ -27,7 +27,7 @@ script = ExtResource("5_y2nar")
 max_health = 3
 
 [node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
-wait_time = 0.4
+wait_time = 0.2
 autostart = true
 
 [node name="Background" type="ColorRect" parent="."]
