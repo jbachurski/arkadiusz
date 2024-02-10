@@ -14,6 +14,7 @@ func _on_death():
 
 func _ready():
 	$Health.connect("death", _on_death)
+	$AnimatedSprite2D.play("default")
 
 func start(pos: Vector2) -> void:
 	initial = pos

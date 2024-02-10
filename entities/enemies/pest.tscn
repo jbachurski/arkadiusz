@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0c2uwqpvn10k"]
+[gd_scene load_steps=14 format=3 uid="uid://d0c2uwqpvn10k"]
 
 [ext_resource type="Script" path="res://entities/enemies/pest_path.gd" id="1_ej6kf"]
 [ext_resource type="Script" path="res://entities/enemies/pest.gd" id="2_u3l2o"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="2_w0ijl"]
+[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="4_kl85o"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng8in"]
 _data = {
@@ -10,7 +11,58 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mykt0"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4t6n7"]
+height = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_041vs"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx052"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uirk5"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sw4a"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku5j2"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3a0p"]
+atlas = ExtResource("4_kl85o")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74lbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_041vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx052")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uirk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sw4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku5j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3a0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="PestPathTrace" type="Path2D"]
 curve = SubResource("Curve2D_ng8in")
@@ -26,23 +78,15 @@ script = ExtResource("1_ej6kf")
 rotation = -1.57243
 script = ExtResource("2_u3l2o")
 
-[node name="ColorRect" type="ColorRect" parent="PestPath/Pest"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -17.5
-offset_top = -17.5
-offset_right = 17.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.305882, 0.666667, 0.803922, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PestPath/Pest"]
-shape = SubResource("RectangleShape2D_mykt0")
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4t6n7")
 
 [node name="Health" type="Node" parent="PestPath/Pest"]
 script = ExtResource("2_w0ijl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PestPath/Pest"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_74lbb")
+speed_scale = 1.5

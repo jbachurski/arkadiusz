@@ -12,3 +12,4 @@ func _on_death():
 
 func _ready():
 	$Health.connect("death", _on_death)
+	$AnimatedSprite2D.play("default")

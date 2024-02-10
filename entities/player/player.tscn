@@ -25,10 +25,6 @@ grow_vertical = 2
 color = Color(0.611765, 0.501961, 1, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.4
-autostart = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a5tj2")
 
