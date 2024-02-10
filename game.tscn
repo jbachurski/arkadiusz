@@ -30,6 +30,14 @@ max_health = 3
 wait_time = 0.2
 autostart = true
 
+[node name="LeftShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
+wait_time = 0.4
+autostart = true
+
+[node name="RightShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
+wait_time = 0.4
+autostart = true
+
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2
 anchors_preset = 15

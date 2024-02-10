@@ -2,6 +2,7 @@ extends Area2D
 class_name Enemy
 
 const BULLET = preload("res://entities/projectiles/bullet.tscn")
+const CANNON = preload("res://entities/powerups/cannon.tscn")
 const WAVE_RANGE = 50
 const FALL_SPEED = 250
 const LIVE_NORM = 1
@@ -10,6 +11,11 @@ const LIVE_NORM = 1
 @export var initial: Vector2
 
 func _on_death():
+	if randf() <= 0.025:
+		var p = CANNON.instantiate()
+		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
+		p.position = get_global_transform_with_canvas().origin + noise
+		$"/root/Game/Friendlies".add_child(p)
 	self.queue_free()
 
 func _ready():

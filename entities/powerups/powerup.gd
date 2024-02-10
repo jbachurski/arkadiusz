@@ -3,7 +3,7 @@ class_name Powerup
 
 const MOVE_SPEED = 70.0
 
-enum Kind {SPEED}
+enum Kind {SPEED, CANNON}
 
 static func kind():
 	return null

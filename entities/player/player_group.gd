@@ -1,10 +1,15 @@
 extends CanvasGroup
 
+var cannon_level: int = 0
 
 func _ready():
 	$Health.connect("death", _on_death)
 	$ShootTimer.connect("timeout", $Player.shoot)
 	$ShootTimer.connect("timeout", $PlayerRefl.shoot)
+	$LeftShootTimer.connect("timeout", $Player.shoot_left)
+	$LeftShootTimer.connect("timeout", $PlayerRefl.shoot_right)
+	$RightShootTimer.connect("timeout", $Player.shoot_right)
+	$RightShootTimer.connect("timeout", $PlayerRefl.shoot_left)
 
 func _on_death():
 	print("YOU DIED")
