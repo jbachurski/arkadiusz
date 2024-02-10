@@ -10,7 +10,7 @@ var team: TEAM
 
 func _on_collision(area: Area2D):
 	if area.has_node("Health"):
-		var health = area.find_child("Health", true, true)
+		var health = area.find_child("Health")
 		if health.team == team:
 			return
 
@@ -20,12 +20,12 @@ func _on_collision(area: Area2D):
 func _ready():
 	self.connect("area_entered", _on_collision)
 
-func start(position: Vector2, dir: Vector2, speed: float, damage: int, team: TEAM) -> void:
-	self.position = position
-	self.damage = damage
-	self.speed = speed
-	self.team = team
-	self.direction = dir.normalized()
+func start(pos: Vector2, dir: Vector2, spd: float, dmg: int, tm: TEAM) -> void:
+	position = pos
+	damage = dmg
+	speed = spd
+	team = tm
+	direction = dir.normalized()
 
 func _between(x, a, b):
 	return a <= x and x <= b

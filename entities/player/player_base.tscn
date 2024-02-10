@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dtsxq2w6dvcrq"]
+
+[node name="PlayerBase" type="Node2D"]
