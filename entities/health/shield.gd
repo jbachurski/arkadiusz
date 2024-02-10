@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ih5qbcnd8wcp"]
+extends Area2D
 
-[sub_resource type="GDScript" id="GDScript_b70un"]
-script/source = "extends Node
-
+class_name Shield
+@export var health: Health
+@export var area: CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +12,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-"
-
-[node name="Health" type="Node"]
-script = SubResource("GDScript_b70un")
