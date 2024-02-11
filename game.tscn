@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
 [ext_resource type="Script" path="res://background.gd" id="5_oxmxv"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="5_y2nar"]
+[ext_resource type="PackedScene" uid="uid://0gfxlltg54d6" path="res://entities/health/invframe.tscn" id="6_342co"]
 [ext_resource type="AudioStream" uid="uid://bdb0nabmx42qu" path="res://assets/space_music.wav" id="7_gh86p"]
 [ext_resource type="PackedScene" uid="uid://f8ohgsevcmuu" path="res://ui/health_bar_left.tscn" id="8_8b686"]
 [ext_resource type="PackedScene" uid="uid://vgdwe82bckkl" path="res://ui/health_bar_right.tscn" id="9_hitqp"]
@@ -29,6 +30,8 @@ position = Vector2(300, 700)
 script = ExtResource("5_y2nar")
 team = 1
 max_health = 3
+
+[node name="Invframe" parent="Friendlies/PlayerGroup/Health" instance=ExtResource("6_342co")]
 
 [node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
 wait_time = 0.2

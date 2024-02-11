@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0gfxlltg54d6"]
+
+[ext_resource type="Script" path="res://entities/health/invframe.gd" id="1_mqyi7"]
+
+[node name="Invframe" type="Node"]
+script = ExtResource("1_mqyi7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.66
+one_shot = true
