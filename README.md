@@ -2,6 +2,8 @@
 
 Battle your way through space vampire bats and flying skulls to save the galaxy from the evil flagship!
 
+Play it on [itch.io](https://jbachurski.itch.io/arkadiusz) (includes a web version!)
+
 ## Credits
 
 - [jbachurski](https://github.com/jbachurski) - Coding
