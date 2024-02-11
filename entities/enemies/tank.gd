@@ -22,6 +22,7 @@ func _on_death():
 		if randi_range(0, 1) == 0:
 			break
 	self.queue_free()
+	$/root/Game/Sounds/EnemyBeamLaser.stop()
 
 func _ready():
 	target_y = randf_range(100, 200)
@@ -45,12 +46,15 @@ func _shoot_at(target: Vector2):
 	aim_dir = null
 	
 	$/root/Game/Sounds/EnemyBeamLaser.play()
+	
 	for i in range(100):
 		var b = BULLET.instantiate()
 		b.start(position, dir, 1000, 1, ProjectileBase.Team.ENEMY)
 		get_parent().add_child(b)
 		await sleep(0.02)
+	
 	$/root/Game/Sounds/EnemyBeamLaser.stop()
+	
 	wave_speed = 1
 	live = last_live
 
@@ -73,10 +77,7 @@ func _process(delta):
 	)
 	live += delta * LIVE_NORM
 	queue_redraw()
-
-	var h = get_viewport_rect().size.y
-	if not (-0.2 * h < position.y and position.y < 1.2 * h):
-		queue_free()
+		
 
 func _draw():
 	if aim_dir != null:

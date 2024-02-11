@@ -14,7 +14,7 @@ script = ExtResource("1_f1dsp")
 shape = SubResource("CapsuleShape2D_p21rp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.309804, 0.784314, 1)
+modulate = Color(0.360784, 0.596078, 1, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_t4flq")
 region_enabled = true

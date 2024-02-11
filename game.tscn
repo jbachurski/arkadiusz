@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://vgdwe82bckkl" path="res://ui/health_bar_right.tscn" id="9_hitqp"]
 [ext_resource type="AudioStream" uid="uid://bha2mb4vo8d2a" path="res://assets/powerup.wav" id="11_e8kco"]
 [ext_resource type="AudioStream" uid="uid://dwtghexd2hp5l" path="res://assets/enemy_laser.wav" id="12_b2wei"]
-[ext_resource type="AudioStream" uid="uid://bib0k8althmb5" path="res://assets/beam_laser.wav" id="13_uap0p"]
+[ext_resource type="AudioStream" uid="uid://bs63k8wy0ycvv" path="res://assets/beam_laser.wav" id="13_uap0p"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -95,3 +95,5 @@ volume_db = -3.0
 
 [node name="EnemyBeamLaser" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("13_uap0p")
+volume_db = -7.0
+pitch_scale = 0.7
