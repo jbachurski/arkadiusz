@@ -41,7 +41,7 @@ func _beam_at(target: Vector2):
 	active_aims.erase(this)
 	for i in range(75):
 		var b = BULLET.instantiate()
-		b.start(position, dir, 1000, 1, ProjectileBase.Team.ENEMY)
+		b.start(position, dir, 1000, 1.5, ProjectileBase.Team.ENEMY)
 		get_parent().add_child(b)
 		await sleep(0.02)
 
@@ -88,7 +88,7 @@ func _partition_attack():
 			var x = (l * j + r * (density - j)) / density - size.x / len(pattern) / density / 2
 			var b = BULLET.instantiate()
 			var pos = Vector2(x, -0.05 * size.y)
-			b.start(pos, Vector2(0, 1), 200, 1, ProjectileBase.Team.ENEMY)
+			b.start(pos, Vector2(0, 1), 200, 1.5, ProjectileBase.Team.ENEMY)
 			get_parent().add_child(b)
 
 func _partition_attack_set(c: int):

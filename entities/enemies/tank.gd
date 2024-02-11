@@ -52,7 +52,7 @@ func _shoot_at(target: Vector2):
 	
 	for i in range(100):
 		var b = BULLET.instantiate()
-		b.start(position, dir, 1000, 1, ProjectileBase.Team.ENEMY)
+		b.start(position, dir, 1000, 2, ProjectileBase.Team.ENEMY)
 		get_parent().add_child(b)
 		await sleep(0.02)
 	
