@@ -18,8 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://b2snj8ejd8mq1" path="res://assets/bounce_laser.wav" id="15_21dwh"]
 [ext_resource type="Texture2D" uid="uid://fchejkf3ocrb" path="res://assets/slortnoc.png" id="16_ck5ft"]
 [ext_resource type="Script" path="res://intro.gd" id="17_7lupd"]
-[ext_resource type="Texture2D" uid="uid://k77c2i45xyga" path="res://assets/endscreen.png" id="18_kcvxq"]
-[ext_resource type="Texture2D" uid="uid://dmvonsv1a7ssu" path="res://assets/overscreen.png" id="19_riout"]
+[ext_resource type="Texture2D" uid="uid://n7grtwlcn1u1" path="res://assets/game_win.png" id="19_e4xh4"]
+[ext_resource type="Texture2D" uid="uid://chj55ugsppb45" path="res://assets/game_over.png" id="20_4u2by"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -154,13 +154,11 @@ visible = false
 z_index = 100
 offset_right = 125.0
 offset_bottom = 160.0
-scale = Vector2(5, 5)
-texture = ExtResource("18_kcvxq")
+texture = ExtResource("19_e4xh4")
 
 [node name="GameOver" type="TextureRect" parent="."]
 visible = false
 z_index = 100
 offset_right = 125.0
 offset_bottom = 160.0
-scale = Vector2(5, 5)
-texture = ExtResource("19_riout")
+texture = ExtResource("20_4u2by")
