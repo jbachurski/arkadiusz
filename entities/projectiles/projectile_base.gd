@@ -21,7 +21,7 @@ func _on_collision(area: Area2D):
 			if area is Shield:
 				direction = direction.bounce((global_position - area.global_position).normalized()).normalized()
 				rotation = direction.rotated(PI / 2).angle()
-				area.find_child("BounceAudio").play()
+				$/root/Game/Sounds/Bounce.play()
 				timer.start(DAMAGE_INTERVAL)
 				speed /= 2
 			else:
