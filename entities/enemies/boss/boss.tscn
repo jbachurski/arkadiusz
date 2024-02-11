@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbdlj6f5sv8pd"]
+[gd_scene load_steps=13 format=3 uid="uid://bbdlj6f5sv8pd"]
 
 [ext_resource type="Script" path="res://entities/enemies/boss/boss.gd" id="1_jixjb"]
 [ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="2_101km"]
-[ext_resource type="PackedScene" uid="uid://b4mx4kjg542ox" path="res://entities/enemies/boss/boss_gun.tscn" id="3_0tkc5"]
+[ext_resource type="PackedScene" uid="uid://bdlvatwihks1m" path="res://entities/health/shield.tscn" id="3_pi56p"]
+[ext_resource type="Script" path="res://entities/health/health.gd" id="4_dgsa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfdx2"]
 size = Vector2(192, 109)
@@ -68,12 +69,9 @@ shape = SubResource("RectangleShape2D_pfdx2")
 modulate = Color(1, 0.227451, 0.164706, 1)
 sprite_frames = SubResource("SpriteFrames_458yk")
 
-[node name="BossGun" parent="." instance=ExtResource("3_0tkc5")]
-position = Vector2(-64, 24)
+[node name="Area2D" parent="." instance=ExtResource("3_pi56p")]
+max_health = 250
 
-[node name="BossGun2" parent="." instance=ExtResource("3_0tkc5")]
-position = Vector2(64, 24)
-
-[node name="MainGunTimer" type="Timer" parent="."]
-wait_time = 0.4
-autostart = true
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_dgsa8")
+max_health = 10
