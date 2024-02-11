@@ -14,7 +14,7 @@ func real_position():
 	return get_global_transform_with_canvas().origin
 
 func _on_death():
-	if randf() <= 0.075:
+	if randf() <= 0.011:
 		var p = FIRE.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 4
 		p.position = real_position() + noise

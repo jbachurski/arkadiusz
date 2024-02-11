@@ -22,9 +22,9 @@ var WAVES = [
 	#Wave.new(1.0, wave_boss),
 	#Wave.new(1.0, wave1),
 	#Wave.new(0.5, wave2)
-	Wave.new(7.0, intro_wave),
-	Wave.new(2.0, main_wave),
-	Wave.new(2.0, tank_wave),
+	#Wave.new(7.0, intro_wave),
+	#Wave.new(2.0, main_wave),
+	#Wave.new(2.0, tank_wave),
 	Wave.new(5.0, wave_boss)
 ]
 

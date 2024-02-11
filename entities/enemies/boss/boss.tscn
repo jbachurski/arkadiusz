@@ -45,8 +45,8 @@ frame_progress = 0.190707
 
 [node name="Shield" parent="." instance=ExtResource("3_pi56p")]
 scale = Vector2(1.5, 1.5)
-max_health = 500
+max_health = 600
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_dgsa8")
-max_health = 10
+max_health = 30.0

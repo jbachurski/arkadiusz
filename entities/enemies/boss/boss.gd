@@ -5,6 +5,8 @@ const BULLET = preload("res://entities/projectiles/bullet.tscn")
 var beams_so_far: int = 0
 var active_aims = {}
 @export var score_value: int = 1000
+var shield_max_health: int = 0
+var last_pattern: String = ""
 
 func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
@@ -16,6 +18,10 @@ func _on_death():
 func _attacks():
 	await sleep(3.0)
 	while true:
+		if randi_range(0, 1) == 0:
+			await get_parent().add_pest_wave(4)
+		else:
+			await get_parent().add_pest_refl_wave(4)
 		await _beam_attack()
 		await sleep(2.0)
 		await _partition_attack_set(8)
@@ -26,6 +32,7 @@ func _attacks():
 func _ready():
 	$AnimatedSprite2D.play("default")
 	$Health.connect("death", _on_death)
+	shield_max_health = $Shield/Health.max_health
 	_attacks()
 
 func _beam_at(target: Vector2):
@@ -82,6 +89,9 @@ func _partition_attack():
 		" + +  ++",
 	]
 	var pattern = patterns[randi_range(0, len(patterns) - 1)]
+	while pattern == last_pattern:
+		pattern = patterns[randi_range(0, len(patterns) - 1)]
+	last_pattern = pattern
 	const density = 4
 	for i in range(len(pattern)):
 		if pattern[i] == " ":
@@ -111,3 +121,6 @@ func _process(delta: float) -> void:
 func _draw():
 	for dir in active_aims.values():
 		draw_line(Vector2.ZERO, dir * 2000, Color.SKY_BLUE, 3.0)
+	var shield_health = $Shield/Health.health if $Shield/Health != null else 0
+	var ratio = ($Health.health + shield_health) / float($Health.max_health + shield_max_health)
+	draw_line(size * Vector2(-0.4 * ratio, -0.16), size * Vector2(0.4 * ratio, -0.16), Color.DEEP_SKY_BLUE, 10.0)
