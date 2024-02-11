@@ -14,6 +14,8 @@ Play it on [itch.io](https://jbachurski.itch.io/arkadiusz) (includes a web versi
 - License for code: GNU General Public License v3
 - License for sprites: Creative Commons BY-NC-SA 4.0
 
+## Attribution for sounds and fonts
+
 ### opengameart.org
 
 - dklon
