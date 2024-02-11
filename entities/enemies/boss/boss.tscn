@@ -1,61 +1,33 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbdlj6f5sv8pd"]
+[gd_scene load_steps=9 format=3 uid="uid://bbdlj6f5sv8pd"]
 
 [ext_resource type="Script" path="res://entities/enemies/boss/boss.gd" id="1_jixjb"]
-[ext_resource type="Texture2D" uid="uid://dp4snkwx2tmkn" path="res://assets/bat.png" id="2_101km"]
+[ext_resource type="Texture2D" uid="uid://m0vmhc3ykk7r" path="res://assets/boss.png" id="2_hhny8"]
 [ext_resource type="PackedScene" uid="uid://bdlvatwihks1m" path="res://entities/health/shield.tscn" id="3_pi56p"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="4_dgsa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfdx2"]
 size = Vector2(192, 109)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cg74"]
-atlas = ExtResource("2_101km")
-region = Rect2(0, 0, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w680l"]
+atlas = ExtResource("2_hhny8")
+region = Rect2(0, 0, 472, 472)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qq67x"]
-atlas = ExtResource("2_101km")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_st3eq"]
-atlas = ExtResource("2_101km")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iudqc"]
-atlas = ExtResource("2_101km")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xhbm"]
-atlas = ExtResource("2_101km")
-region = Rect2(768, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qe7rl"]
-atlas = ExtResource("2_101km")
-region = Rect2(960, 0, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dwg0"]
+atlas = ExtResource("2_hhny8")
+region = Rect2(472, 0, 472, 472)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_458yk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6cg74")
+"texture": SubResource("AtlasTexture_w680l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qq67x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_st3eq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iudqc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8xhbm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qe7rl")
+"texture": SubResource("AtlasTexture_0dwg0")
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 12.0
 }]
 
 [node name="Boss" type="Area2D"]
@@ -66,10 +38,13 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_pfdx2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.227451, 0.164706, 1)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_458yk")
+frame = 1
+frame_progress = 0.190707
 
 [node name="Shield" parent="." instance=ExtResource("3_pi56p")]
+scale = Vector2(1.5, 1.5)
 max_health = 500
 
 [node name="Health" type="Node" parent="."]
