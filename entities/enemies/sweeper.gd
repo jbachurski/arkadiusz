@@ -3,6 +3,9 @@ extends Area2D
 const BULLET = preload("res://entities/projectiles/bullet.tscn")
 const FIRE = preload("res://entities/powerups/fire.tscn")
 
+func sleep(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
 @export var damage: int = 1 
 var flip: bool = false
 
@@ -17,6 +20,11 @@ func _on_death():
 		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	queue_free()
 
+func _on_damage():
+	$AnimatedSprite2D.modulate = Color(3, 3, 3)
+	await sleep(0.06)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
 func _shoot_at(target: Vector2):
 	var dir = (target - real_position()).normalized()
 	var b = BULLET.instantiate()
@@ -34,6 +42,7 @@ func _on_shoot_timer_timeout():
 
 func _ready():
 	$Health.connect("death", _on_death)
+	$Health.connect("damage", _on_damage)
 	$AnimatedSprite2D.play("default")
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
 	$ShootTimer.connect("timeout", $/root/Game/Sounds/EnemyLaser.play)

@@ -21,11 +21,17 @@ func _on_death():
 	self.queue_free()
 	$/root/Game/Sounds/EnemyBeamLaser.stop()
 
+func _on_damage():
+	$AnimatedSprite2D.modulate = Color(3, 3, 3)
+	await sleep(0.06)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
 func _ready():
 	target_y = randf_range(100, 200)
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
 	$ShootTimer.connect("timeout", $/root/Game/Sounds/AttackAlert.play)
 	$Health.connect("death", _on_death)
+	$Health.connect("damage", _on_damage)
 	$AnimatedSprite2D.play("default")
 
 func sleep(seconds: float) -> void:

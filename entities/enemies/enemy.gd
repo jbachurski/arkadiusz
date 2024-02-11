@@ -10,6 +10,9 @@ const LIVE_NORM = 1
 @export var live: float = 0.0
 @export var initial: Vector2
 
+func sleep(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
 func _on_death():
 	if randf() <= 0.15:
 		var p = DEFENSE.instantiate()
@@ -18,8 +21,15 @@ func _on_death():
 		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	self.queue_free()
 
+func _on_damage():
+	$AnimatedSprite2D.modulate = Color(3, 3, 3)
+	await sleep(0.06)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
+
 func _ready():
 	$Health.connect("death", _on_death)
+	$Health.connect("damage", _on_damage)
 	$AnimatedSprite2D.play("default")
 
 func start(pos: Vector2) -> void:
