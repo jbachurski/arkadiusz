@@ -18,7 +18,9 @@ func _attacks():
 		await _beam_attack()
 		await sleep(2.0)
 		await _partition_attack_set(8)
-		await sleep(5.0)
+		await sleep(3.0)
+		await get_parent().add_sweeper_wave(3)
+		await sleep(1.0)
 
 func _ready():
 	$AnimatedSprite2D.play("default")
@@ -78,7 +80,7 @@ func _partition_attack():
 		for j in range(density):
 			var l = i * (size.x / len(pattern))
 			var r = (i + 1) * (size.x / len(pattern))
-			var x = (l * j + r * (density - j)) / density
+			var x = (l * j + r * (density - j)) / density - size.x / len(pattern) / density / 2
 			var b = BULLET.instantiate()
 			var pos = Vector2(x, -0.05 * size.y)
 			b.start(pos, Vector2(0, 1), 200, 1, ProjectileBase.Team.ENEMY)

@@ -4,6 +4,7 @@ const TANK = preload("res://entities/enemies/tank.tscn")
 const SWEEPER = preload("res://entities/enemies/sweeper.tscn")
 const PEST = preload("res://entities/enemies/pest.tscn")
 const ENEMY = preload("res://entities/enemies/enemy.tscn")
+const BOSS = preload("res://entities/enemies/boss/boss.tscn")
 @onready var size = get_viewport_rect().size
 
 class Wave:
@@ -18,6 +19,7 @@ class Wave:
 		await fun.call()
 
 var WAVES = [
+	#Wave.new(1.0, wave_boss),
 	Wave.new(1.0, wave1),
 	Wave.new(0.5, wave2)
 ]
@@ -67,15 +69,18 @@ func add_pest_refl_wave(c: int):
 		await sleep(0.33)
 	await sleep(2)
 
+func add_sweeper_wave(c: int):
+	for i in range(c):
+		add_child(next_sweeper(Vector2(randf_range(0.0, 0.3), randf_range(-0.05, -0.02)) * size))
+		add_child(next_sweeper(Vector2(randf_range(0.7, 1.0), randf_range(-0.05, -0.02)) * size, true))
+		await sleep(2.0)	
+
 func wave1():
 	add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
 	await sleep(3)
 	await add_pest_wave(6)
-	for i in range(4):
-		add_child(next_sweeper(Vector2(randf_range(0.0, 0.3), randf_range(-0.05, -0.02)) * size))
-		add_child(next_sweeper(Vector2(randf_range(0.7, 1.0), randf_range(-0.05, -0.02)) * size, true))
-		await sleep(2)
 	await add_pest_refl_wave(6)
+	await add_sweeper_wave(4)
 	add_pest_wave(4)
 	await add_pest_refl_wave(4)
 	await sleep(2.0)
@@ -93,6 +98,13 @@ func wave2():
 		add_enemy()
 		await sleep(1.5)
 
+
+func wave_boss():
+	var e = BOSS.instantiate()
+	var pos = Vector2(randf_range(0.4, 0.6), -0.2) * size
+	e.position = pos
+	add_child(e)
+	
 
 func run_waves():
 	for wave in WAVES:
