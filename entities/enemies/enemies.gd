@@ -156,8 +156,22 @@ func wave2():
 		add_enemy()
 		await sleep(1.5)
 
+func change_music():
+	var tween = get_tree().create_tween()
+	var transition_duration = 7.00
+	var main_theme = $/root/Game/Sounds/MainTheme
+	var boss_theme = $/root/Game/Sounds/BossTheme
+	
+	boss_theme.play()
+	tween.tween_property(main_theme, "volume_db", -30, transition_duration)
+	tween.parallel().tween_property(boss_theme, "volume_db", 0, transition_duration)
+	tween.tween_callback(main_theme.stop)
+	
+	await tween.finished
 
 func wave_boss():
+	await change_music()
+	
 	var e = BOSS.instantiate()
 	var pos = Vector2(randf_range(0.4, 0.6), -0.2) * size
 	e.position = pos

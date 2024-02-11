@@ -30,6 +30,7 @@ func _attacks():
 		await sleep(3.0)
 		await get_parent().add_sweeper_wave(3)
 		await sleep(1.0)
+	
 
 func _ready():
 	$AnimatedSprite2D.play("default")
