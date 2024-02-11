@@ -10,6 +10,10 @@ Play it on [itch.io](https://jbachurski.itch.io/arkadiusz) (includes a web versi
 - [Rokcas](https://github.com/Rokcas) - Coding
 - [spdskatr](https://github.com/spdskatr) - Sprites and coding
 
+## License
+- License for code: GNU General Public License v3
+- License for sprites: Creative Commons BY-NC-SA 4.0
+
 ### opengameart.org
 
 - dklon
