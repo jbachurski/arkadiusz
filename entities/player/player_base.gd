@@ -1,12 +1,15 @@
 extends Area2D
 class_name PlayerBase
 
-const MISSILE = preload("res://entities/projectiles/missile.tscn")
+const MISSILE_RED = preload("res://entities/projectiles/missile_red.tscn")
 var flip_sides: int = 1
 var since_side: int = 0
 
+func get_projectile():
+	return MISSILE_RED.instantiate()
+
 func shoot():
-	var b = MISSILE.instantiate()
+	var b = get_projectile()
 	get_parent().get_parent().add_child(b)
 	b.start(position, Vector2(0, -1), 1000, 1, ProjectileBase.Team.PLAYER)
 	if get_parent().cannon_level >= 1:
@@ -22,7 +25,7 @@ func shoot():
 func shoot_side():
 	if get_parent().cannon_level < 1:
 		return
-	var b = MISSILE.instantiate()
+	var b = get_projectile()
 	get_parent().get_parent().add_child(b)
 	b.start(position, Vector2(-flip_sides, -1), 800, 1, ProjectileBase.Team.PLAYER)
 
