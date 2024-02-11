@@ -4,13 +4,14 @@ const BULLET = preload("res://entities/projectiles/bullet.tscn")
 @onready var size = get_viewport_rect().size
 var beams_so_far: int = 0
 var active_aims = {}
-
+@export var score_value: int = 1000
 
 func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_death():
 	queue_free()
+	$/root/Game/UI/Score.score += score_value
 
 func _attacks():
 	await sleep(3.0)

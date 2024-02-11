@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cggumrix3vtas"]
+[gd_scene load_steps=19 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://entities/player/player.tscn" id="1_crfkl"]
 [ext_resource type="Script" path="res://entities/player/player_group.gd" id="2_r53bq"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
 [ext_resource type="PackedScene" uid="uid://dmgjxhrpsf45g" path="res://entities/health/regenerating_health.tscn" id="5_mqwdj"]
 [ext_resource type="Script" path="res://background.gd" id="5_oxmxv"]
-[ext_resource type="PackedScene" uid="uid://0gfxlltg54d6" path="res://entities/health/invframe.tscn" id="6_342co"]
+[ext_resource type="PackedScene" path="res://entities/health/invframe.tscn" id="6_342co"]
 [ext_resource type="AudioStream" uid="uid://bdb0nabmx42qu" path="res://assets/space_music.wav" id="7_gh86p"]
 [ext_resource type="PackedScene" uid="uid://f8ohgsevcmuu" path="res://ui/health_bar_left.tscn" id="8_8b686"]
 [ext_resource type="PackedScene" uid="uid://vgdwe82bckkl" path="res://ui/health_bar_right.tscn" id="9_hitqp"]
+[ext_resource type="PackedScene" uid="uid://cjickjpiggfoq" path="res://ui/score.tscn" id="10_dmdiw"]
 [ext_resource type="AudioStream" uid="uid://bha2mb4vo8d2a" path="res://assets/powerup.wav" id="11_e8kco"]
 [ext_resource type="AudioStream" uid="uid://dwtghexd2hp5l" path="res://assets/enemy_laser.wav" id="12_b2wei"]
 [ext_resource type="AudioStream" uid="uid://bs63k8wy0ycvv" path="res://assets/beam_laser.wav" id="13_uap0p"]
@@ -84,6 +85,15 @@ offset_top = 773.0
 offset_right = 259.0
 offset_bottom = 733.0
 scale = Vector2(4.5, 0.25)
+
+[node name="Score" parent="UI" instance=ExtResource("10_dmdiw")]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 724.0
+offset_right = 1413.0
+offset_bottom = 1003.0
+scale = Vector2(0.15, 0.15)
+text = "0000000"
 
 [node name="Sounds" type="Node" parent="."]
 

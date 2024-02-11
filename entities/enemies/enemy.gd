@@ -9,6 +9,7 @@ const LIVE_NORM = 1
 
 @export var live: float = 0.0
 @export var initial: Vector2
+@export var score_value: int = 2
 
 func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
@@ -20,6 +21,7 @@ func _on_death():
 		p.position = get_global_transform_with_canvas().origin + noise
 		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	self.queue_free()
+	$/root/Game/UI/Score.score += score_value
 
 func _on_damage():
 	$AnimatedSprite2D.modulate = Color(3, 3, 3)
