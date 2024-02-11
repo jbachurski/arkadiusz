@@ -27,7 +27,7 @@ func start(pos: Vector2) -> void:
 	position = initial
 	_reset_shoot_timer()
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
-	$ShootTimer.connect("timeout", $LaserAudio.play)
+	$ShootTimer.connect("timeout", $/root/Game/Sounds/EnemyLaser.play)
 	$ShootTimer.start($ShootTimer.time_left / 2)
 
 

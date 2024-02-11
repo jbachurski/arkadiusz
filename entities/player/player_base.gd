@@ -38,6 +38,7 @@ func _on_collision(area):
 		elif area.kind() == Powerup.Kind.FIRE:
 			get_parent().get_node("ShootTimer").wait_time *= 0.8
 		area.queue_free()
+		$/root/Game/Sounds/Powerup.play()
 
 func _ready():
 	self.connect("area_entered", _on_collision)

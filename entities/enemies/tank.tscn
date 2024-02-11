@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8pf0ejve0wrl"]
+[gd_scene load_steps=13 format=3 uid="uid://cuipkmjx7vrsx"]
 
 [ext_resource type="Script" path="res://entities/enemies/tank.gd" id="1_klfr2"]
 [ext_resource type="Script" path="res://entities/health/health.gd" id="2_2l0lb"]

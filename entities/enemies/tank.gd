@@ -26,6 +26,7 @@ func _on_death():
 func _ready():
 	target_y = randf_range(100, 200)
 	$ShootTimer.connect("timeout", _on_shoot_timer_timeout)
+	$ShootTimer.connect("timeout", $/root/Game/Sounds/EnemyLaser.play)
 	$Health.connect("death", _on_death)
 	$AnimatedSprite2D.play("default")
 
@@ -42,11 +43,14 @@ func _shoot_at(target: Vector2):
 		wave_speed *= (1 - 2.0/len(delays))
 	wave_speed = 0
 	aim_dir = null
+	
+	$/root/Game/Sounds/EnemyBeamLaser.play()
 	for i in range(100):
 		var b = BULLET.instantiate()
 		b.start(position, dir, 1000, 1, ProjectileBase.Team.ENEMY)
 		get_parent().add_child(b)
 		await sleep(0.02)
+	$/root/Game/Sounds/EnemyBeamLaser.stop()
 	wave_speed = 1
 	live = last_live
 
