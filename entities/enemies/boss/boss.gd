@@ -10,6 +10,8 @@ func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_death():
+	get_tree().paused = true
+	$/root/Game/GameWin.set_visible(true)
 	queue_free()
 	$/root/Game/UI/Score.score += score_value
 
