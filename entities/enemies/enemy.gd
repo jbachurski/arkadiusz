@@ -14,7 +14,7 @@ func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_death():
-	if randf() <= 0.12:
+	if randf() <= 0.05:
 		var p = DEFENSE.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 12
 		p.position = get_global_transform_with_canvas().origin + noise
