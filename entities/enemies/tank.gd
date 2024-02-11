@@ -2,7 +2,7 @@ extends Area2D
 class_name Tank
 
 const BULLET = preload("res://entities/projectiles/bullet.tscn")
-const FIRE = preload("res://entities/powerups/fire.tscn")
+const CANNON = preload("res://entities/powerups/cannon.tscn")
 const WAVE_RANGE = 100
 const FALL_SPEED = 100
 const LIVE_NORM = 1
@@ -14,13 +14,10 @@ var wave_speed: float = 1.0
 var last_live: float = 0.0
 
 func _on_death():
-	while true:
-		var p = FIRE.instantiate()
-		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 20
-		p.position = get_global_transform_with_canvas().origin + noise
-		$"/root/Game/Friendlies".call_deferred("add_child", p)
-		if randi_range(0, 1) == 0:
-			break
+	var p = CANNON.instantiate()
+	var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 20
+	p.position = get_global_transform_with_canvas().origin + noise
+	$"/root/Game/Friendlies".call_deferred("add_child", p)
 	self.queue_free()
 	$/root/Game/Sounds/EnemyBeamLaser.stop()
 

@@ -4,8 +4,8 @@ var cannon_level: int = 0
 
 func _ready():
 	$Health.connect("death", _on_death)
-	$ShootTimer.connect("timeout", $Player.shoot)
 	$ShootTimer.connect("timeout", $PlayerRefl.shoot)
+	$ShootTimer.connect("timeout", $Player.shoot)
 	$PlayerRefl.flip_sides = -1
 
 func _on_death():

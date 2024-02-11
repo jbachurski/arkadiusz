@@ -8,7 +8,7 @@ func real_position():
 	return get_global_transform_with_canvas().origin
 
 func _on_death():
-	if randf() <= 0.125:
+	if randf() <= 0.15:
 		var p = SPEED.instantiate()
 		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
 		p.position = real_position() + noise

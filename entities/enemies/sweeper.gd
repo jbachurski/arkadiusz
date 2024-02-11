@@ -1,7 +1,7 @@
 extends Area2D
 
 const BULLET = preload("res://entities/projectiles/bullet.tscn")
-const SPEED = preload("res://entities/powerups/speed.tscn")
+const FIRE = preload("res://entities/powerups/fire.tscn")
 
 @export var damage: int = 1 
 var flip: bool = false
@@ -10,9 +10,9 @@ func real_position():
 	return get_global_transform_with_canvas().origin
 
 func _on_death():
-	if randf() <= 0.2:
-		var p = SPEED.instantiate()
-		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 8
+	if randf() <= 0.15:
+		var p = FIRE.instantiate()
+		var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 4
 		p.position = real_position() + noise
 		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	queue_free()

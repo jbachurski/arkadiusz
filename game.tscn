@@ -26,10 +26,10 @@ script = ExtResource("2_ufrw2")
 [node name="PlayerGroup" type="CanvasGroup" parent="Friendlies"]
 script = ExtResource("2_r53bq")
 
+[node name="PlayerRefl" parent="Friendlies/PlayerGroup" instance=ExtResource("4_2hgb6")]
+
 [node name="Player" parent="Friendlies/PlayerGroup" instance=ExtResource("1_crfkl")]
 position = Vector2(300, 700)
-
-[node name="PlayerRefl" parent="Friendlies/PlayerGroup" instance=ExtResource("4_2hgb6")]
 
 [node name="Health" type="Node" parent="Friendlies/PlayerGroup"]
 script = ExtResource("5_y2nar")

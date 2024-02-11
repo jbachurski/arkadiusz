@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctlvp0mgc4lrj"]
+
+[ext_resource type="Script" path="res://entities/powerups/defense.gd" id="1_sm5bl"]
+[ext_resource type="Texture2D" uid="uid://d2tfdm870m526" path="res://assets/defense.png" id="2_omvy3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xv12r"]
+radius = 15.0
+
+[node name="Speed" type="Area2D"]
+script = ExtResource("1_sm5bl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xv12r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_omvy3")
