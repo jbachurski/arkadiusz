@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bib0k8althmb5"
+uid="uid://bs63k8wy0ycvv"
 path="res://.godot/imported/beam_laser.wav-a6677ae7375d2506fd4fbae4a0753c30.sample"
 
 [deps]
@@ -20,5 +20,5 @@ edit/trim=false
 edit/normalize=false
 edit/loop_mode=2
 edit/loop_begin=0
-edit/loop_end=-1
+edit/loop_end=20074
 compress/mode=0
