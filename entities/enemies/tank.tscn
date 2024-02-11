@@ -65,7 +65,7 @@ script = ExtResource("1_klfr2")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_2l0lb")
-max_health = 5
+max_health = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -78,7 +78,7 @@ shape = SubResource("CapsuleShape2D_6avf3")
 
 [node name="Shield" parent="." instance=ExtResource("4_6qhie")]
 scale = Vector2(0.9, 0.9)
-max_health = 60
+max_health = 100
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 6.0

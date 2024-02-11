@@ -22,10 +22,10 @@ var WAVES = [
 	#Wave.new(1.0, wave_boss),
 	#Wave.new(1.0, wave1),
 	#Wave.new(0.5, wave2)
-	Wave.new(1.0, intro_wave),
-	Wave.new(1.0, main_wave),
-	Wave.new(1.0, tank_wave),
-	Wave.new(1.0, wave_boss)
+	Wave.new(7.0, intro_wave),
+	Wave.new(2.0, main_wave),
+	Wave.new(2.0, tank_wave),
+	Wave.new(5.0, wave_boss)
 ]
 
 func sleep(seconds: float) -> void:
@@ -81,8 +81,13 @@ func add_sweeper_wave(c: int):
 
 func intro_wave():
 	await add_pest_wave(6)
+	await add_pest_refl_wave(6)
+	await sleep(2.0)
 	add_sweeper_wave(6)
-	await add_pest_refl_wave(15)
+	await sleep(4.0)
+	add_pest_wave(3)
+	add_sweeper_wave(2)
+	await add_pest_refl_wave(3)
 	await sleep(2.0)
 
 func add_dual_enemy(symmetrical: bool):
@@ -101,6 +106,8 @@ func main_wave():
 	for i in range(10):
 		add_dual_enemy(i % 2 == 0)
 		await sleep(2)
+	await add_pest_wave(4)
+	await add_pest_refl_wave(4)
 	for i in range(5):
 		add_sweeper_wave(1)
 		add_dual_enemy(i % 2 == 0)
@@ -114,7 +121,10 @@ func tank_wave():
 		add_dual_enemy(i % 2 == 0)
 		await sleep(5)
 	add_tank(Vector2(0.3, -0.1) * size)
-	await add_sweeper_wave(10)
+	await add_sweeper_wave(8)
+	await sleep(3)
+	await add_pest_wave(4)
+	await add_pest_refl_wave(4)
 	await sleep(3)
 	add_tank(Vector2(0.5, -0.1) * size)
 	await sleep(1)

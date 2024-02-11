@@ -36,7 +36,7 @@ func _on_collision(area):
 		elif area.kind() == Powerup.Kind.CANNON:
 			get_parent().cannon_level += 1
 		elif area.kind() == Powerup.Kind.FIRE:
-			get_parent().get_node("ShootTimer").wait_time *= 0.85
+			get_parent().get_node("ShootTimer").wait_time *= 0.9
 		elif area.kind() == Powerup.Kind.DEFENSE:
 			var health = get_parent().get_node("Health")
 			health.max_health += 1
