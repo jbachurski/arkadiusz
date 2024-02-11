@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://3jysgj8f46ny"]
+
+[ext_resource type="Texture2D" uid="uid://baqwp6e85cus5" path="res://assets/health_point.png" id="1_hagvr"]
+
+[sub_resource type="GDScript" id="GDScript_7gy4j"]
+script/source = "extends HBoxContainer
+
+@export var health_gradient: Gradient
+@export var health_point: PackedScene
+
+var health = 0
+@export var max_health: float = 15
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	health = max_health
+	setup_health()
+	pass # Replace with function body.
+
+func setup_health():
+	for i in range()
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Gradient" id="Gradient_8diua"]
+offsets = PackedFloat32Array(0, 0.99, 1)
+colors = PackedColorArray(0.975775, 0.497866, 1, 1, 0.819077, 0, 0.118833, 1, 1, 1, 1, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_ytltb"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("HealthPoint", "TextureRect", "texture"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0),
+"variants": [ExtResource("1_hagvr")],
+"version": 3
+}
+
+[node name="FancyHealthBar" type="HBoxContainer"]
+script = SubResource("GDScript_7gy4j")
+health_gradient = SubResource("Gradient_8diua")
+health_point = SubResource("PackedScene_ytltb")
+max_health = null
