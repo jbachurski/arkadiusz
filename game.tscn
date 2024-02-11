@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cggumrix3vtas"]
+[gd_scene load_steps=18 format=3 uid="uid://cggumrix3vtas"]
 
 [ext_resource type="PackedScene" uid="uid://b6tpfym8tlpnl" path="res://entities/player/player.tscn" id="1_crfkl"]
 [ext_resource type="Script" path="res://entities/player/player_group.gd" id="2_r53bq"]
 [ext_resource type="Script" path="res://entities/enemies/enemies.gd" id="2_ufrw2"]
 [ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
-[ext_resource type="PackedScene" uid="uid://dmgjxhrpsf45g" path="res://entities/health/regenerating_health.tscn" id="5_mqwdj"]
+[ext_resource type="PackedScene" path="res://entities/health/regenerating_health.tscn" id="5_mqwdj"]
 [ext_resource type="Script" path="res://background.gd" id="5_oxmxv"]
 [ext_resource type="PackedScene" uid="uid://0gfxlltg54d6" path="res://entities/health/invframe.tscn" id="6_342co"]
 [ext_resource type="AudioStream" uid="uid://bdb0nabmx42qu" path="res://assets/space_music.wav" id="7_gh86p"]
@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://bs63k8wy0ycvv" path="res://assets/beam_laser.wav" id="13_uap0p"]
 [ext_resource type="AudioStream" uid="uid://dgr6ahh17w10j" path="res://assets/alert_normal.wav" id="14_2jyo2"]
 [ext_resource type="AudioStream" uid="uid://b2snj8ejd8mq1" path="res://assets/bounce_laser.wav" id="15_21dwh"]
+[ext_resource type="Texture2D" uid="uid://fchejkf3ocrb" path="res://assets/slortnoc.png" id="16_ck5ft"]
+[ext_resource type="Script" path="res://intro.gd" id="17_7lupd"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -113,3 +115,24 @@ stream = ExtResource("15_21dwh")
 volume_db = -14.0
 pitch_scale = 0.7
 max_polyphony = 3
+
+[node name="Intro" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -4.0
+offset_right = 567.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_ck5ft")
+script = ExtResource("17_7lupd")
+
+[node name="Timer" type="Timer" parent="Intro"]
+wait_time = 10.0
+one_shot = true
+autostart = true
