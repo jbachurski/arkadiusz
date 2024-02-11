@@ -104,19 +104,18 @@ func main_wave():
 	for i in range(5):
 		add_sweeper_wave(1)
 		add_dual_enemy(i % 2 == 0)
-		await sleep(3)
+		await sleep(5)
 
 func tank_wave():
 	add_tank(Vector2(0.5, -0.1) * size)
-	add_sweeper_wave(10)
-	await sleep(15)
+	await add_sweeper_wave(10)
 	for i in range(5):
 		add_sweeper_wave(1)
 		add_dual_enemy(i % 2 == 0)
-		await sleep(3)
+		await sleep(5)
 	add_tank(Vector2(0.3, -0.1) * size)
-	add_sweeper_wave(10)
-	await sleep(20)
+	await add_sweeper_wave(10)
+	await sleep(3)
 	add_tank(Vector2(0.5, -0.1) * size)
 	await sleep(1)
 	add_tank(Vector2(0.2, -0.1) * size)
