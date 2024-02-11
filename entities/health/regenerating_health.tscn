@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgjxhrpsf45g"]
+
+[ext_resource type="Script" path="res://entities/health/regenerating_health.gd" id="1_omr14"]
+
+[node name="Health" type="Node"]
+script = ExtResource("1_omr14")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

@@ -19,5 +19,6 @@ script = ExtResource("1_2sfak")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+step = 0.0
 value = 100.0
 texture_progress = ExtResource("2_b46mv")

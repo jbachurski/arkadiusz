@@ -20,8 +20,12 @@ class Wave:
 
 var WAVES = [
 	#Wave.new(1.0, wave_boss),
-	Wave.new(1.0, wave1),
-	Wave.new(0.5, wave2)
+	#Wave.new(1.0, wave1),
+	#Wave.new(0.5, wave2)
+	Wave.new(1.0, intro_wave),
+	Wave.new(1.0, main_wave),
+	Wave.new(1.0, tank_wave),
+	Wave.new(1.0, wave_boss)
 ]
 
 func sleep(seconds: float) -> void:
@@ -73,7 +77,51 @@ func add_sweeper_wave(c: int):
 	for i in range(c):
 		add_child(next_sweeper(Vector2(randf_range(0.0, 0.3), randf_range(-0.05, -0.02)) * size))
 		add_child(next_sweeper(Vector2(randf_range(0.7, 1.0), randf_range(-0.05, -0.02)) * size, true))
-		await sleep(2.0)	
+		await sleep(2.0)
+
+func intro_wave():
+	await add_pest_wave(6)
+	add_sweeper_wave(6)
+	await add_pest_refl_wave(15)
+	await sleep(2.0)
+
+func add_dual_enemy(symmetrical: bool):
+	var pos1 = Vector2(randf_range(0.05, 0.95), -0.1) * size
+	var pos2 = Vector2(1 - pos1.x, -0.1) * size
+	if not symmetrical:
+		pos2 = Vector2(randf_range(0.05, 0.95), -0.1) * size
+	var e1 = ENEMY.instantiate()
+	var e2 = ENEMY.instantiate()
+	add_child(e1)
+	add_child(e2)
+	e1.start(pos1)
+	e2.start(pos2)
+
+func main_wave():
+	for i in range(10):
+		add_dual_enemy(i % 2 == 0)
+		await sleep(2)
+	for i in range(5):
+		add_sweeper_wave(1)
+		add_dual_enemy(i % 2 == 0)
+		await sleep(5)
+
+func tank_wave():
+	add_tank(Vector2(0.5, -0.1) * size)
+	await add_sweeper_wave(10)
+	for i in range(5):
+		add_sweeper_wave(1)
+		add_dual_enemy(i % 2 == 0)
+		await sleep(5)
+	add_tank(Vector2(0.3, -0.1) * size)
+	await add_sweeper_wave(10)
+	await sleep(3)
+	add_tank(Vector2(0.5, -0.1) * size)
+	await sleep(1)
+	add_tank(Vector2(0.2, -0.1) * size)
+	await sleep(1)
+	add_tank(Vector2(0.8, -0.1) * size)
+	await sleep(30)
 
 func wave1():
 	add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
