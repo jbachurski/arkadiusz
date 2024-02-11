@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nip6hj1aj5mi"]
+
+[ext_resource type="Script" path="res://entities/projectiles/projectile_base.gd" id="1_l34ek"]
+[ext_resource type="Texture2D" uid="uid://gst4lbbu6cne" path="res://assets/projectiles.png" id="2_tckap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8v3c"]
+radius = 9.0
+
+[node name="ProjectileBase" type="Area2D"]
+script = ExtResource("1_l34ek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r8v3c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.74902, 0, 0.898039, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tckap")
+region_enabled = true
+region_rect = Rect2(115, 10, 40, 40)
