@@ -13,6 +13,8 @@ var aim_dir = null
 var wave_speed: float = 1.0
 var last_live: float = 0.0
 
+@export var score_value: int = 20
+
 func _on_death():
 	var p = CANNON.instantiate()
 	var noise = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 20
@@ -20,6 +22,7 @@ func _on_death():
 	$"/root/Game/Friendlies".call_deferred("add_child", p)
 	self.queue_free()
 	$/root/Game/Sounds/EnemyBeamLaser.stop()
+	$/root/Game/UI/Score.score += score_value
 
 func _on_damage():
 	$AnimatedSprite2D.modulate = Color(3, 3, 3)

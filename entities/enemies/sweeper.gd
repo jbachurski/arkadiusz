@@ -7,6 +7,7 @@ func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 @export var damage: int = 1 
+@export var score_value: int = 3
 var flip: bool = false
 
 func real_position():
@@ -19,6 +20,7 @@ func _on_death():
 		p.position = real_position() + noise
 		$"/root/Game/Friendlies".call_deferred("add_child", p)
 	queue_free()
+	$/root/Game/UI/Score.score += score_value
 
 func _on_damage():
 	$AnimatedSprite2D.modulate = Color(3, 3, 3)
