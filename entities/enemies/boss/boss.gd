@@ -54,6 +54,11 @@ func _beam_attack():
 	player_alt_pos = $/root/Game/Friendlies/PlayerGroup/PlayerRefl.position
 	_beam_at(player_pos)
 	_beam_at(player_alt_pos)
+	await sleep(1.5)
+	player_pos = $/root/Game/Friendlies/PlayerGroup/Player.position
+	player_alt_pos = $/root/Game/Friendlies/PlayerGroup/PlayerRefl.position
+	_beam_at(player_pos)
+	_beam_at(player_alt_pos)
 
 func _beam_attack_set(c: int):
 	for i in range(c):

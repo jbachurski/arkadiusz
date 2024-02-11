@@ -24,6 +24,7 @@ var WAVES = [
 	#Wave.new(0.5, wave2)
 	Wave.new(1.0, intro_wave),
 	Wave.new(1.0, main_wave),
+	Wave.new(1.0, tank_wave),
 	Wave.new(1.0, wave_boss)
 ]
 
@@ -91,17 +92,37 @@ func add_dual_enemy(symmetrical: bool):
 		pos2 = Vector2(randf_range(0.05, 0.95), -0.1) * size
 	var e1 = ENEMY.instantiate()
 	var e2 = ENEMY.instantiate()
-	e1.start(pos1)
-	e2.start(pos2)
 	add_child(e1)
 	add_child(e2)
+	e1.start(pos1)
+	e2.start(pos2)
 
 func main_wave():
 	for i in range(10):
-		await add_dual_enemy(i % 2 == 0)
+		add_dual_enemy(i % 2 == 0)
+		await sleep(2)
 	for i in range(5):
-		add_sweeper_wave(2)
-		await add_dual_enemy(i % 2 == 0)
+		add_sweeper_wave(1)
+		add_dual_enemy(i % 2 == 0)
+		await sleep(3)
+
+func tank_wave():
+	add_tank(Vector2(0.5, -0.1) * size)
+	add_sweeper_wave(10)
+	await sleep(15)
+	for i in range(5):
+		add_sweeper_wave(1)
+		add_dual_enemy(i % 2 == 0)
+		await sleep(3)
+	add_tank(Vector2(0.3, -0.1) * size)
+	add_sweeper_wave(10)
+	await sleep(20)
+	add_tank(Vector2(0.5, -0.1) * size)
+	await sleep(1)
+	add_tank(Vector2(0.2, -0.1) * size)
+	await sleep(1)
+	add_tank(Vector2(0.8, -0.1) * size)
+	await sleep(30)
 
 func wave1():
 	add_tank(Vector2(randf_range(0.25, 0.75), randf_range(-0.2, -0.1)) * size)
