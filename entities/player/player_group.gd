@@ -6,6 +6,8 @@ func sleep(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_death():
+	$/root/Game/GameOver.set_visible(true)
+	get_tree().paused = true
 	print("YOU DIED")
 
 func _star_rumble():
