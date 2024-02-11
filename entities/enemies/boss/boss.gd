@@ -29,6 +29,7 @@ func _ready():
 	_attacks()
 
 func _beam_at(target: Vector2):
+	$/root/Game/Sounds/AttackAlert.play()
 	var this = beams_so_far
 	beams_so_far += 1
 	var dir = (target - position).normalized()
@@ -40,6 +41,7 @@ func _beam_at(target: Vector2):
 			active_aims.erase(this)
 		await sleep(delays[i])
 	active_aims.erase(this)
+	$/root/Game/Sounds/EnemyBeamLaser.play()
 	for i in range(75):
 		var b = BULLET.instantiate()
 		b.start(position, dir, 1000, 1.5, ProjectileBase.Team.ENEMY)
@@ -59,7 +61,8 @@ func _beam_attack():
 	player_pos = $/root/Game/Friendlies/PlayerGroup/Player.position
 	player_alt_pos = $/root/Game/Friendlies/PlayerGroup/PlayerRefl.position
 	_beam_at(player_pos)
-	_beam_at(player_alt_pos)
+	await _beam_at(player_alt_pos)
+	$/root/Game/Sounds/EnemyBeamLaser.stop()
 
 func _beam_attack_set(c: int):
 	for i in range(c):
