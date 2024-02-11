@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://entities/player/player_group.gd" id="2_r53bq"]
 [ext_resource type="Script" path="res://entities/enemies/enemies.gd" id="2_ufrw2"]
 [ext_resource type="PackedScene" uid="uid://coqo55yidwpov" path="res://entities/player/player_refl.tscn" id="4_2hgb6"]
+[ext_resource type="PackedScene" uid="uid://dmgjxhrpsf45g" path="res://entities/health/regenerating_health.tscn" id="5_mqwdj"]
 [ext_resource type="Script" path="res://background.gd" id="5_oxmxv"]
-[ext_resource type="Script" path="res://entities/health/health.gd" id="5_y2nar"]
-[ext_resource type="PackedScene" uid="uid://0gfxlltg54d6" path="res://entities/health/invframe.tscn" id="6_342co"]
+[ext_resource type="PackedScene" path="res://entities/health/invframe.tscn" id="6_342co"]
 [ext_resource type="AudioStream" uid="uid://bdb0nabmx42qu" path="res://assets/space_music.wav" id="7_gh86p"]
 [ext_resource type="PackedScene" uid="uid://f8ohgsevcmuu" path="res://ui/health_bar_left.tscn" id="8_8b686"]
 [ext_resource type="PackedScene" uid="uid://vgdwe82bckkl" path="res://ui/health_bar_right.tscn" id="9_hitqp"]
@@ -31,16 +31,16 @@ script = ExtResource("2_r53bq")
 [node name="Player" parent="Friendlies/PlayerGroup" instance=ExtResource("1_crfkl")]
 position = Vector2(300, 700)
 
-[node name="Health" type="Node" parent="Friendlies/PlayerGroup"]
-script = ExtResource("5_y2nar")
-team = 1
-max_health = 3
-
-[node name="Invframe" parent="Friendlies/PlayerGroup/Health" instance=ExtResource("6_342co")]
-
 [node name="ShootTimer" type="Timer" parent="Friendlies/PlayerGroup"]
 wait_time = 0.2
 autostart = true
+
+[node name="Health" parent="Friendlies/PlayerGroup" instance=ExtResource("5_mqwdj")]
+regen_rate = 0.05
+team = 1
+max_health = 10.0
+
+[node name="Invframe" parent="Friendlies/PlayerGroup/Health" instance=ExtResource("6_342co")]
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2
